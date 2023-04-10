@@ -47,12 +47,19 @@ public class Main extends javax.swing.JFrame {
         jFrame8 = new javax.swing.JFrame();
         jMenuItem1 = new javax.swing.JMenuItem();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        centerTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         SearchTypeSelect = new javax.swing.JComboBox<>();
         TypeSwitchButton = new javax.swing.JButton();
         CoordinatesX = new javax.swing.JTextField();
         CoordinatesY = new javax.swing.JTextField();
         DataSearchButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        dataToDisplayTable = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        areaToDisplay = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         userActions = new javax.swing.JMenu();
         Login = new javax.swing.JMenuItem();
@@ -174,6 +181,15 @@ public class Main extends javax.swing.JFrame {
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
+        centerTable.setModel(ddtm);
+        centerTable.setColumnSelectionAllowed(true);
+        centerTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                centerTableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(centerTable);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Search data by:");
@@ -197,6 +213,42 @@ public class Main extends javax.swing.JFrame {
         CoordinatesY.setText("Y coordinates");
 
         DataSearchButton.setText("SEARCH!");
+        DataSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DataSearchButtonActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton1.setText("Display data");
+
+        dataToDisplayTable.setModel(ddtm);
+        dataToDisplayTable.setColumnSelectionAllowed(true);
+        dataToDisplayTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dataToDisplayTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(dataToDisplayTable);
+        dataToDisplayTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (dataToDisplayTable.getColumnModel().getColumnCount() > 0) {
+            dataToDisplayTable.getColumnModel().getColumn(0).setMinWidth(50);
+            dataToDisplayTable.getColumnModel().getColumn(0).setMaxWidth(500);
+            dataToDisplayTable.getColumnModel().getColumn(1).setMinWidth(50);
+            dataToDisplayTable.getColumnModel().getColumn(1).setMaxWidth(500);
+            dataToDisplayTable.getColumnModel().getColumn(2).setMinWidth(130);
+            dataToDisplayTable.getColumnModel().getColumn(2).setPreferredWidth(150);
+            dataToDisplayTable.getColumnModel().getColumn(2).setMaxWidth(170);
+            dataToDisplayTable.getColumnModel().getColumn(3).setMinWidth(130);
+            dataToDisplayTable.getColumnModel().getColumn(3).setPreferredWidth(150);
+            dataToDisplayTable.getColumnModel().getColumn(3).setMaxWidth(170);
+        }
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Selected area:");
+
+        areaToDisplay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        areaToDisplay.setText("undefined");
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -241,18 +293,28 @@ public class Main extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(SearchTypeSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TypeSwitchButton))
+                        .addComponent(areaToDisplay)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(CoordinatesX, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(CoordinatesY, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(DataSearchButton)))
-                .addContainerGap(112, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(SearchTypeSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TypeSwitchButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(CoordinatesX, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(CoordinatesY, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(DataSearchButton)))
+                        .addGap(0, 106, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,7 +329,14 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(CoordinatesX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CoordinatesY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DataSearchButton))
-                .addContainerGap(423, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(areaToDisplay))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         CoordinatesX.getAccessibleContext().setAccessibleName("");
@@ -320,6 +389,24 @@ public class Main extends javax.swing.JFrame {
         loginForm.setVisible(true);
     }//GEN-LAST:event_LoginActionPerformed
 
+    private void centerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_centerTableMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_centerTableMouseClicked
+
+    private void DataSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataSearchButtonActionPerformed
+        // TODO add your handling code here:
+        ddtm.setRowCount(0);
+        ddtm.addRow(
+                new Object[] {"Albavilla", "Italy", 45.8003800, 9.1850400}
+        );
+    }//GEN-LAST:event_DataSearchButtonActionPerformed
+
+    private void dataToDisplayTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataToDisplayTableMouseClicked
+        // TODO add your handling code here:
+        String selectedArea = ddtm.getValueAt(dataToDisplayTable.getSelectedRow(), 0).toString();
+        areaToDisplay.setText(selectedArea);
+    }//GEN-LAST:event_dataToDisplayTableMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -354,6 +441,25 @@ public class Main extends javax.swing.JFrame {
         });
     }
 
+    javax.swing.table.DefaultTableModel ddtm = new javax.swing.table.DefaultTableModel(
+    new Object [][] {},tableHeader) {
+    Class[] types = new Class [] {
+        java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class
+    };
+    boolean[] canEdit = new boolean [] {
+        false, false, false, false
+    };
+
+    public Class getColumnClass(int columnIndex) {
+        return types [columnIndex];
+    }
+
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return canEdit [columnIndex];
+    }};
+    
+    private static String[] tableHeader = new String [] {"Name", "Country", "X coordinate", "Y coordinate"};
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CoordinatesX;
     private javax.swing.JTextField CoordinatesY;
@@ -362,7 +468,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem Register;
     private javax.swing.JComboBox<String> SearchTypeSelect;
     private javax.swing.JButton TypeSwitchButton;
+    private javax.swing.JLabel areaToDisplay;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JTable centerTable;
+    private javax.swing.JTable dataToDisplayTable;
+    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JFrame jFrame1;
@@ -374,6 +484,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JFrame jFrame7;
     private javax.swing.JFrame jFrame8;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -382,6 +493,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JMenu userActions;
     // End of variables declaration//GEN-END:variables
 }
