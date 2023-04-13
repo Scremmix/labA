@@ -15,6 +15,7 @@ public class LoginPopup extends javax.swing.JFrame {
      */
     public LoginPopup() {
         initComponents();
+        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
 
     /**

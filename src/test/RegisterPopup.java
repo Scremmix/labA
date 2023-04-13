@@ -4,7 +4,6 @@
  */
 package test;
 
-import javax.swing.JTable;
 
 /**
  *
@@ -17,6 +16,7 @@ public class RegisterPopup extends javax.swing.JFrame {
      */
     public RegisterPopup() {
         initComponents();
+        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
 
     /**

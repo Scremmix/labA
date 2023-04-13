@@ -221,6 +221,11 @@ public class Main extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton1.setText("Display data");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         dataToDisplayTable.setModel(ddtm);
         dataToDisplayTable.setColumnSelectionAllowed(true);
@@ -407,6 +412,12 @@ public class Main extends javax.swing.JFrame {
         String selectedArea = ddtm.getValueAt(dataToDisplayTable.getSelectedRow(), 0).toString();
         areaToDisplay.setText(selectedArea);
     }//GEN-LAST:event_dataToDisplayTableMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        DataDisplay showData = new DataDisplay();
+        showData.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
