@@ -17,7 +17,7 @@ public class Salvataggio {
     private String numeroCivico; 
     private String cap;
     private String comune; 
-    private String provincia;               //ParametriClimatici - CentriMonitoraggio
+    private String provincia;               
     private String area;
     
     public void setVento(int vento) {
@@ -63,16 +63,16 @@ public class Salvataggio {
     
     public void SalvaDati(){
         try{
-            File file = new File("CentriMonitoraggio.txt");
+            File file = new File("CentriMonitoraggio.csv");
             try (Scanner scanner = new Scanner(file)) {
                 scanner.useDelimiter("[\\r,]");
-                while(scanner.hasNext())                //controlla fino a che ci sono righe
+                while(scanner.hasNext())                                                                //controlla fino a che ci sono righe.
                 {
                     String Stazione = scanner.next();
-                    if(Stazione.equals(stazione))
-                    {
+                    if(Stazione.equals(stazione))                                                       //Se il nome della stazione corrisponde con il nome
+                    {                                                                                   //di una stazione salvata nel file appostio.
                         try{
-                            try (FileWriter writer = new FileWriter("ParametriClimatici.txt",true)) {
+                            try (FileWriter writer = new FileWriter("ParametriClimatici.csv",true)) {
                                 writer.write("Stazione: "+ stazione + ", "+
                                         "Vento- " + vento +
                                         "; Umidita- " + umidita +
@@ -89,8 +89,8 @@ public class Salvataggio {
                     }
                     else
                     {
-                        try (FileWriter writer_ = new FileWriter("CentroMonitoraggio.txt",true)) {      //Inserisce la stazione
-                            writer_.write(stazione + ", " +                                        //ncm ->Nome Centro Monitoraggio
+                        try (FileWriter writer_ = new FileWriter("CentroMonitoraggio.csv",true)) {      //Se il nome della stazione non corrisponde con il nome
+                            writer_.write(stazione + ", " +                                             //di NESSUNA stazione.
                                     "Indirizzo- " + via +
                                     "; Numero Civico- " + numeroCivico +
                                     "; Cap- " + cap +
@@ -103,7 +103,7 @@ public class Salvataggio {
                             System.out.println("Errore durante il salvataggio dei dati del centro di monitoraggio");
                         }
                         try{
-                            try (FileWriter writer = new FileWriter("ParametriClimatici.txt",true)) {       //inserisce i prametri
+                            try (FileWriter writer = new FileWriter("ParametriClimatici.csv",true)) {       
                                 writer.write("Stazione: "+ stazione + ", "+
                                         "Vento- " + vento +
                                         "; Umidita- " + umidita +
