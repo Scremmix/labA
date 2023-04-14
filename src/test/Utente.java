@@ -15,7 +15,7 @@ public class Utente {
     private static String nomeUtente, password;
     private String[][] m={
         {"aiefn45","Microfono62"},
-        {"mussolini","carlo45"},
+        {"piero","carlo45"},
         {"carloconti","astolfo66"},
         {"dottorscotti","riso29"}
     };
@@ -57,7 +57,10 @@ public class Utente {
         if(!Pattern.compile(
                 "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"+"[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$"
         ).matcher(email).matches())
-            throw new utenteException("La mail inserita non è valida");
+            throw new utenteException("La mail inserita non è valida.");
+        
+        if(codiceFiscale.length()!=16)
+            throw new utenteException("Il codice fiscale non è valido.");
         //salvataggio su file da inserire
         
     }
