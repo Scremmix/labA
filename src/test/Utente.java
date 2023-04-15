@@ -4,6 +4,10 @@
  */
 package test;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
@@ -66,5 +70,21 @@ public class Utente {
             throw new utenteException("Il codice fiscale non è valido.");
         //salvataggio su file da inserire
         
+    }
+    
+    public static void ricerca(String nome, String password2){
+        try {
+            FileReader read = new FileReader("./datafiles/OperatoriRegistrati.csv");            //legge il file, riga per riga, prende ogni volta una riga in esame
+            Scanner input = new Scanner(read);                                                  //separa con "#" controlla con la stringa generata solo le 2 posizioni,
+            while(input.hasNextLine()) {                                                        //che ci interessano "nome utente e psw".
+                String line = input.nextLine();
+                String[] parts = line.split("#");
+                    if (parts[6].contains(nomeUtente) && parts[7].contains(password)) {
+                        System.out.println("Utente trovato");
+                    }
+                }
+        }catch(FileNotFoundException ex){
+            System.out.println("Utente non trovato");
+        }
     }
 }
