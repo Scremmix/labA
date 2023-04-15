@@ -4,6 +4,8 @@
  */
 package test;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alesc
@@ -385,14 +387,24 @@ public class Main extends javax.swing.JFrame {
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
         // TODO add your handling code here:
-        RegisterPopup registerForm = new RegisterPopup();
-        registerForm.setVisible(true);
+        if(!Utente.loggato())
+        {
+                RegisterPopup registerForm = new RegisterPopup();
+                registerForm.setVisible(true);
+        }
+        else
+            JOptionPane.showMessageDialog(rootPane, "Login già eseguito come: "+Utente.getUsername()+".");
     }//GEN-LAST:event_RegisterActionPerformed
 
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         // TODO add your handling code here:
-        LoginPopup loginForm = new LoginPopup();
-        loginForm.setVisible(true);
+        if(!Utente.loggato())
+        {
+            LoginPopup loginForm = new LoginPopup();
+            loginForm.setVisible(true);
+        }
+        else
+            JOptionPane.showMessageDialog(rootPane, "Login già eseguito come: "+Utente.getUsername()+".");
     }//GEN-LAST:event_LoginActionPerformed
 
     private void centerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_centerTableMouseClicked

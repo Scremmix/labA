@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 public class Utente {
     
     private static String nomeUtente, password;
-    private String[][] m={
+    private static String[][] m={
         {"aiefn45","Microfono62"},
         {"piero","carlo45"},
         {"carloconti","astolfo66"},
@@ -25,7 +25,7 @@ public class Utente {
         password= null;
     }
     
-    public boolean login(String nomeUtente, String password)
+    public static boolean login(String nomeUtente, String password)
     {
         if(!loggato())
         {
@@ -43,12 +43,15 @@ public class Utente {
             
     }
     
-    public boolean loggato()
+    public static String getUsername()
+    {return Utente.nomeUtente;}
+    
+    public static boolean loggato()
     {
         return !(nomeUtente==null)&&!(password==null);
     }
     
-    public void register(String nome, String cognome, String password1, String password2, String email, String codiceFiscale, int idCentro) 
+    public static void register(String nome, String cognome, String password1, String password2, String email, String codiceFiscale, int idCentro) 
             throws utenteException
     {
         if(!password1.equals(password2))

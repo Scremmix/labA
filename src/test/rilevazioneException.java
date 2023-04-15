@@ -14,8 +14,7 @@ public class rilevazioneException extends Exception{
      * Creates a new instance of <code>rilevazioneException</code> without
      * detail message.
      */
-    public rilevazioneException() {
-    }
+    public rilevazioneException() {}
 
     /**
      * Constructs an instance of <code>rilevazioneException</code> with the
