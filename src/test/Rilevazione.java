@@ -1,11 +1,8 @@
 package test;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.Scanner;
 
 public class Rilevazione {
     private String centro; //esempio: Insubria
@@ -45,7 +42,7 @@ public class Rilevazione {
     }
     
     public void SalvaRilevazione(){
-        try (FileWriter writer = new FileWriter("../datafiles/ParametriClimatici.csv",true)) {
+        try (FileWriter writer = new FileWriter("datafiles/ParametriClimatici.csv",true)) {
             writer.write(
                     centro+"#"+area.toString()+"#"+data+"#"+ora+"#"+tipoDato+"#"+valore+"#"+nota+"\n"
                 );

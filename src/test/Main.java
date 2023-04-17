@@ -360,12 +360,12 @@ public class Main extends javax.swing.JFrame {
         switch(SearchTypeSelect.getSelectedIndex())
         {
             case 0 -> {
-                CoordinatesX.setText("Location name");
-                CoordinatesY.setText("Country name");
+                CoordinatesX.setText("Nome località (inglese)");
+                CoordinatesY.setText("Nome Stato (inglese)");
             }
             case 1 -> {
-                CoordinatesX.setText("X coordinates");
-                CoordinatesY.setText("Y coordinates");
+                CoordinatesX.setText("Latitudine (N/S)");
+                CoordinatesY.setText("Longitudine (E/O)");
             }
         }
         DataSearchButton.setVisible(true);
