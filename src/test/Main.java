@@ -17,9 +17,6 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
-        CoordinatesX.setVisible(false);
-        CoordinatesY.setVisible(false);
-        DataSearchButton.setVisible(false);
     }
 
     /**
@@ -366,7 +363,6 @@ public class Main extends javax.swing.JFrame {
                 CoordinatesY.setText("Longitudine (E/O)");
             }
         }
-        DataSearchButton.setVisible(true);
         Main.this.revalidate();
         Main.this.repaint();
     }//GEN-LAST:event_TypeSwitchButtonActionPerformed

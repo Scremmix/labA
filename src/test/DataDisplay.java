@@ -48,7 +48,7 @@ public class DataDisplay extends javax.swing.JFrame {
         jTable10.getColumnModel().getColumn(3).setCellRenderer(new WordWrapCellRenderer());
         jTable20.getColumnModel().getColumn(3).setCellRenderer(new WordWrapCellRenderer());
         jTable30.getColumnModel().getColumn(3).setCellRenderer(new WordWrapCellRenderer());
-        jTable40.getColumnModel().getColumn(3).setCellRenderer(new WordWrapCellRenderer());
+        jTable4.getColumnModel().getColumn(3).setCellRenderer(new WordWrapCellRenderer());
         jTable50.getColumnModel().getColumn(3).setCellRenderer(new WordWrapCellRenderer());
         jTable60.getColumnModel().getColumn(3).setCellRenderer(new WordWrapCellRenderer());
         jTable70.getColumnModel().getColumn(3).setCellRenderer(new WordWrapCellRenderer());
@@ -99,7 +99,7 @@ public class DataDisplay extends javax.swing.JFrame {
         scansValue4 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable40 = new javax.swing.JTable();
+        jTable4 = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel51 = new javax.swing.JLabel();
         dataValue5 = new javax.swing.JLabel();
@@ -337,10 +337,10 @@ public class DataDisplay extends javax.swing.JFrame {
 
         jLabel43.setText("Scansioni:");
 
-        jTable40.setModel(tableModArray[3]);
-        jTable40.getTableHeader().setReorderingAllowed(false);
-        jScrollPane4.setViewportView(jTable40);
-        jTable40.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTable4.setModel(tableModArray[3]);
+        jTable4.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(jTable4);
+        jTable4.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -834,7 +834,7 @@ public class DataDisplay extends javax.swing.JFrame {
     private javax.swing.JTable jTable10;
     private javax.swing.JTable jTable20;
     private javax.swing.JTable jTable30;
-    private javax.swing.JTable jTable40;
+    private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable50;
     private javax.swing.JTable jTable60;
     private javax.swing.JTable jTable70;
