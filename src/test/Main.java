@@ -355,8 +355,6 @@ public class Main extends javax.swing.JFrame {
 
     private void TypeSwitchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TypeSwitchButtonActionPerformed
         // TODO add your handling code here:
-        CoordinatesX.setVisible(true);
-        CoordinatesY.setVisible(true);
         switch(SearchTypeSelect.getSelectedIndex())
         {
             case 0 -> {
@@ -427,7 +425,7 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        DataDisplay showData = new DataDisplay();
+        DataDisplay showData = new DataDisplay("3178229");
         showData.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

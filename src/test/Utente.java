@@ -90,9 +90,6 @@ public class Utente {
             while(input.hasNextLine()) {                                                            //che ci interessano "nome utente e psw".
                 String line = input.nextLine();
                 String[] parts = line.split("#");
-                    for(String dato: parts)
-                        System.out.println(dato);
-                    System.out.println("\n");
                     if (parts[4].contains(nomeUtente) && parts[5].contains(pw))
                         return new String[] {parts[0],parts[1]};
                 }

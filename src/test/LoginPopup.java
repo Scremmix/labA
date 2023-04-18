@@ -48,7 +48,7 @@ public class LoginPopup extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton2.setText("Cancel");
+        jButton2.setText("Annulla");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -59,7 +59,7 @@ public class LoginPopup extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Login");
 
-        jLabel2.setText("Username:");
+        jLabel2.setText("ID utente:");
 
         jLabel3.setText("Password:");
 
@@ -81,7 +81,7 @@ public class LoginPopup extends javax.swing.JFrame {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(username)
                     .addComponent(password))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
