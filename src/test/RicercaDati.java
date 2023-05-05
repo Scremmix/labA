@@ -4,7 +4,10 @@
  */
 package test;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,22 +19,103 @@ public class RicercaDati extends javax.swing.JFrame {
     /**
      * Creates new form JFrameTest
      */
-    private ArrayList<datiStato> mondo=new ArrayList<datiStato>();
+    private ArrayList<datiStato> mondoNomi=null;
+    private ArrayList<String[]> mondoCoord=null;
+    private int localitaSelezionataID=-1;
     
-    public RicercaDati(int mod) {
-        this.modalita=mod;
-        initComponents();
-        switch(modalita)
+    private datiStato cercaStato(String nomeStato)
+    {
+        if(mondoNomi!=null)
         {
-            case 1 -> {
-                CoordinatesX.setText("Nome località (inglese)");
-                CoordinatesY.setText("Nome Stato (inglese)");
-            }
-            case 2 -> {
-                CoordinatesX.setText("Latitudine (N/S)");
-                CoordinatesY.setText("Longitudine (E/O)");
+            for(datiStato stato: mondoNomi)
+                if(stato.daiNomeStato().equals(nomeStato))
+                    return stato;
+            return null;
+        }
+        else{return null;}
+    }
+    
+    public void cambiaModalita(int mod)
+    {
+        if(this.modalita!=mod)
+        {
+            resetVarFile(this.modalita);
+            this.modalita=mod;
+            switch(this.modalita)
+            {
+                case 1 -> {
+                    Campo1.setText("Nome località (inglese)");
+                    Campo2.setText("Nome Stato (inglese)");
+                    caricaPerNomi();
+                }
+                case 2 -> {
+                    Campo1.setText("Latitudine (N/S)");
+                    Campo2.setText("Longitudine (E/O)");
+                    caricaPerCoord();
+                }
             }
         }
+    }
+    public void caricaPerNomi()
+    {
+        mondoNomi=new ArrayList<datiStato>();
+        try {
+                FileReader read = new FileReader("datafiles/CoordinateMonitoraggio.csv");
+                Scanner input = new Scanner(read);
+                datiStato temp=null;
+                while(input.hasNextLine()) {
+                    String line = input.nextLine();
+                    String[] parts = line.split("#");
+                    temp=cercaStato(parts[4]);
+                    if(temp==null)
+                    {
+                        temp=new datiStato(parts[4]);
+                        mondoNomi.add(temp);
+                    }
+                    try{
+                        temp.inserireLocalita(parts);
+                    } catch (datiStatoException ex) {
+                        JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile caricare la riga con ID: "+parts[0]+".");
+                    }
+                }
+            }
+        catch(FileNotFoundException ex){
+                JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile trovare il file contenente le stazioni di monitoraggio.");
+        }
+    }
+    public void caricaPerCoord()
+    {
+        mondoCoord=new ArrayList<String[]>();
+        try {
+                FileReader read = new FileReader("datafiles/CoordinateMonitoraggio.csv");   
+                Scanner input = new Scanner(read);                    
+                while(input.hasNextLine()) {
+                    String line = input.nextLine();
+                    String[] parts = line.split("#");
+                    mondoCoord.add(parts);
+                }
+            }
+        catch(FileNotFoundException ex){
+                JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile trovare il file contenente le stazioni di monitoraggio.");
+        }
+    }
+    
+    public void resetVarFile(int tipo)
+    {
+        switch(tipo)
+        {
+            case 1 -> {
+                mondoNomi=null;
+            }
+            case 2 -> {
+                mondoCoord=null;
+            }
+        }
+    }
+    public RicercaDati() {
+        initComponents();
+        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        
         RicercaDati.this.revalidate();
         RicercaDati.this.repaint();
     }
@@ -50,176 +134,26 @@ public class RicercaDati extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        jFrame1 = new javax.swing.JFrame();
-        jFrame2 = new javax.swing.JFrame();
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuBar3 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jFrame3 = new javax.swing.JFrame();
-        jFrame4 = new javax.swing.JFrame();
-        jFrame5 = new javax.swing.JFrame();
-        jDialog1 = new javax.swing.JDialog();
-        jFrame6 = new javax.swing.JFrame();
-        jFrame7 = new javax.swing.JFrame();
-        jFrame8 = new javax.swing.JFrame();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        centerTable = new javax.swing.JTable();
-        CoordinatesX = new javax.swing.JTextField();
-        CoordinatesY = new javax.swing.JTextField();
+        Valore1 = new javax.swing.JTextField();
+        Valore2 = new javax.swing.JTextField();
         DataSearchButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         dataToDisplayTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         areaToDisplay = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        userActions = new javax.swing.JMenu();
-        Login = new javax.swing.JMenuItem();
-        Register = new javax.swing.JMenuItem();
-
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
-        jFrame2.getContentPane().setLayout(jFrame2Layout);
-        jFrame2Layout.setHorizontalGroup(
-            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame2Layout.setVerticalGroup(
-            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        jMenu1.setText("File");
-        jMenuBar2.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar2.add(jMenu2);
-
-        jMenu3.setText("File");
-        jMenuBar3.add(jMenu3);
-
-        jMenu4.setText("Edit");
-        jMenuBar3.add(jMenu4);
-
-        javax.swing.GroupLayout jFrame3Layout = new javax.swing.GroupLayout(jFrame3.getContentPane());
-        jFrame3.getContentPane().setLayout(jFrame3Layout);
-        jFrame3Layout.setHorizontalGroup(
-            jFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame3Layout.setVerticalGroup(
-            jFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame4Layout = new javax.swing.GroupLayout(jFrame4.getContentPane());
-        jFrame4.getContentPane().setLayout(jFrame4Layout);
-        jFrame4Layout.setHorizontalGroup(
-            jFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame4Layout.setVerticalGroup(
-            jFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame5Layout = new javax.swing.GroupLayout(jFrame5.getContentPane());
-        jFrame5.getContentPane().setLayout(jFrame5Layout);
-        jFrame5Layout.setHorizontalGroup(
-            jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame5Layout.setVerticalGroup(
-            jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame6Layout = new javax.swing.GroupLayout(jFrame6.getContentPane());
-        jFrame6.getContentPane().setLayout(jFrame6Layout);
-        jFrame6Layout.setHorizontalGroup(
-            jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame6Layout.setVerticalGroup(
-            jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame7Layout = new javax.swing.GroupLayout(jFrame7.getContentPane());
-        jFrame7.getContentPane().setLayout(jFrame7Layout);
-        jFrame7Layout.setHorizontalGroup(
-            jFrame7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame7Layout.setVerticalGroup(
-            jFrame7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame8Layout = new javax.swing.GroupLayout(jFrame8.getContentPane());
-        jFrame8.getContentPane().setLayout(jFrame8Layout);
-        jFrame8Layout.setHorizontalGroup(
-            jFrame8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame8Layout.setVerticalGroup(
-            jFrame8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        jMenuItem1.setText("jMenuItem1");
-
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
-
-        centerTable.setModel(ddtm);
-        centerTable.setColumnSelectionAllowed(true);
-        centerTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                centerTableMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(centerTable);
+        Campo1 = new javax.swing.JLabel();
+        Campo2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        CoordinatesX.setText("X coordinates");
-        CoordinatesX.addActionListener(new java.awt.event.ActionListener() {
+        Valore1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CoordinatesXActionPerformed(evt);
+                Valore1ActionPerformed(evt);
             }
         });
 
-        CoordinatesY.setText("Y coordinates");
-
-        DataSearchButton.setText("SEARCH!");
+        DataSearchButton.setText("Cerca");
         DataSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DataSearchButtonActionPerformed(evt);
@@ -227,7 +161,7 @@ public class RicercaDati extends javax.swing.JFrame {
         });
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setText("Display data");
+        jButton1.setText("Mostra dati");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -257,45 +191,14 @@ public class RicercaDati extends javax.swing.JFrame {
         }
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Selected area:");
+        jLabel2.setText("Area selezionata:");
 
         areaToDisplay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         areaToDisplay.setText("undefined");
 
-        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Campo1.setText("Campo 1");
 
-        userActions.setText("Current user");
-        userActions.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        userActions.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                userActionsFocusGained(evt);
-            }
-        });
-        userActions.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userActionsActionPerformed(evt);
-            }
-        });
-
-        Login.setText("Login");
-        Login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginActionPerformed(evt);
-            }
-        });
-        userActions.add(Login);
-
-        Register.setText("Register");
-        Register.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterActionPerformed(evt);
-            }
-        });
-        userActions.add(Register);
-
-        jMenuBar1.add(userActions);
-
-        setJMenuBar(jMenuBar1);
+        Campo2.setText("Campo2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -304,88 +207,65 @@ public class RicercaDati extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(CoordinatesX, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(CoordinatesY, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(DataSearchButton)
-                        .addContainerGap(112, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(areaToDisplay)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(26, 26, 26))))
+                        .addGap(26, 26, 26))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Valore1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Campo1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Campo2)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Valore2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(DataSearchButton)
+                                .addContainerGap(117, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CoordinatesX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CoordinatesY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Campo1)
+                    .addComponent(Campo2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Valore1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Valore2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DataSearchButton))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(areaToDisplay))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addComponent(areaToDisplay)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14))
         );
 
-        CoordinatesX.getAccessibleContext().setAccessibleName("");
+        Valore1.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CoordinatesXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CoordinatesXActionPerformed
+    private void Valore1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Valore1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CoordinatesXActionPerformed
-
-    private void userActionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userActionsActionPerformed
-
-    private void userActionsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userActionsFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userActionsFocusGained
-
-    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
-        // TODO add your handling code here:
-        if(!Utente.loggato())
-        {
-                RegisterPopup registerForm = new RegisterPopup();
-                registerForm.setVisible(true);
-        }
-        else
-            JOptionPane.showMessageDialog(rootPane, "Login già eseguito come: "+Utente.getUsername()+".");
-    }//GEN-LAST:event_RegisterActionPerformed
-
-    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
-        // TODO add your handling code here:
-        if(!Utente.loggato())
-        {
-            LoginPopup loginForm = new LoginPopup();
-            loginForm.setVisible(true);
-        }
-        else
-            JOptionPane.showMessageDialog(rootPane, "Login già eseguito come: "+Utente.getUsername()+".");
-    }//GEN-LAST:event_LoginActionPerformed
-
-    private void centerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_centerTableMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_centerTableMouseClicked
+    }//GEN-LAST:event_Valore1ActionPerformed
 
     private void DataSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataSearchButtonActionPerformed
         // TODO add your handling code here:
-        if(CoordinatesX.getText().compareTo("")==0)
+        if(Valore1.getText().isBlank()||Valore1.getText().isEmpty())
         {
             switch(modalita)
             {
@@ -397,7 +277,7 @@ public class RicercaDati extends javax.swing.JFrame {
                 }
             }
         }
-        else if(CoordinatesY.getText().compareTo("")==0)
+        else if(Valore2.getText().isBlank()||Valore2.getText().isEmpty())
         {
             switch(modalita)
             {
@@ -409,9 +289,40 @@ public class RicercaDati extends javax.swing.JFrame {
                 }
             }
         }
-        else{}
+        else{
+            switch(modalita)
+            {
+                case 1 -> {
+                    datiStato statoDiRicerca=cercaStato(Valore2.getText());
+                    if(statoDiRicerca==null)
+                        JOptionPane.showMessageDialog(rootPane, "Stato non trovato");
+                    else
+                    {
+                        ArrayList<String[]> elencoLocalita=statoDiRicerca.cerca(Valore1.getText());
+                        if(elencoLocalita==null)
+                            JOptionPane.showMessageDialog(rootPane, "Combinazione località-Stato non trovata.");
+                        else
+                            mostraInTabella(elencoLocalita);
+                    }
+                }
+                case 2 -> {
+                    JOptionPane.showMessageDialog(rootPane, "Work in progress.");
+                }
+            }
+        }
     }//GEN-LAST:event_DataSearchButtonActionPerformed
 
+    private void mostraInTabella(ArrayList<String[]> righe)
+    {
+        ddtm.setRowCount(0);
+        String[] coordinateTemp;
+        for(String[] parti : righe)
+        {
+            coordinateTemp=parti[5].split(",");
+            ddtm.addRow
+                (new Object[] {parti[2]+", ID: "+parti[0],parti[4],Double.parseDouble(coordinateTemp[0]),Double.parseDouble(coordinateTemp[1])});
+        }
+    }
     private void dataToDisplayTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataToDisplayTableMouseClicked
         // TODO add your handling code here:
         String selectedArea = ddtm.getValueAt(dataToDisplayTable.getSelectedRow(), 0).toString();
@@ -456,7 +367,7 @@ public class RicercaDati extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new RicercaDati(1).setVisible(true);
+            new RicercaDati().setVisible(true);
         });
     }
 
@@ -477,40 +388,18 @@ public class RicercaDati extends javax.swing.JFrame {
         return canEdit [columnIndex];
     }};
     
-    private static String[] tableHeader = new String [] {"Name", "Country", "X coordinate", "Y coordinate"};
+    private static String[] tableHeader = new String [] {"Località", "Stato", "Latitudine", "Longitudine"};
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField CoordinatesX;
-    private javax.swing.JTextField CoordinatesY;
+    private javax.swing.JLabel Campo1;
+    private javax.swing.JLabel Campo2;
     private javax.swing.JButton DataSearchButton;
-    private javax.swing.JMenuItem Login;
-    private javax.swing.JMenuItem Register;
+    private javax.swing.JTextField Valore1;
+    private javax.swing.JTextField Valore2;
     private javax.swing.JLabel areaToDisplay;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JTable centerTable;
     private javax.swing.JTable dataToDisplayTable;
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JDialog jDialog1;
-    private javax.swing.JFrame jFrame1;
-    private javax.swing.JFrame jFrame2;
-    private javax.swing.JFrame jFrame3;
-    private javax.swing.JFrame jFrame4;
-    private javax.swing.JFrame jFrame5;
-    private javax.swing.JFrame jFrame6;
-    private javax.swing.JFrame jFrame7;
-    private javax.swing.JFrame jFrame8;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuBar jMenuBar3;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JMenu userActions;
     // End of variables declaration//GEN-END:variables
 }

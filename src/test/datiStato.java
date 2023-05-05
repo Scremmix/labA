@@ -4,6 +4,7 @@
  */
 package test;
 
+import static java.lang.Math.min;
 import java.util.ArrayList;
 
 /**
@@ -21,13 +22,16 @@ public class datiStato
         elencoDati= new ArrayList<String[]>();
     }
     
-    public void inserireDati(String[] dato) throws datiStatoException
+    public void inserireLocalita(String[] dato) throws datiStatoException
     {
         if(dato.length==6)
             elencoDati.add(dato);
         else
-            throw new datiStatoException("Formato dati incorretto");
+            throw new datiStatoException("Formato dati incorretto.");
     }
+    
+    public String daiNomeStato()
+    {return this.nomeStato;}
     
     public ArrayList<String[]> cerca(String nomeAscii)
     {
@@ -38,7 +42,9 @@ public class datiStato
         int tolleranza=0;
         try{
             while(elencoDati.get(primoEl-tolleranza)[2].
-                       substring(0, nomeAscii.length()).
+                       substring(0, 
+                               min(nomeAscii.length(),elencoDati.get(primoEl-tolleranza)[2].length())
+                       ).
                        compareToIgnoreCase(nomeAscii)
                   ==0)
             {
@@ -49,11 +55,13 @@ public class datiStato
         tolleranza=1;
         try{
             while(elencoDati.get(primoEl+tolleranza)[2].
-                       substring(0, nomeAscii.length()).
+                       substring(0, 
+                               min(nomeAscii.length(),elencoDati.get(primoEl-tolleranza)[2].length())
+                       ).
                        compareToIgnoreCase(nomeAscii)
                   ==0)
             {
-                risultato.add(elencoDati.get(primoEl-tolleranza));
+                risultato.add(elencoDati.get(primoEl+tolleranza));
                 tolleranza++;
             }
         }catch(IndexOutOfBoundsException e){} 
@@ -65,21 +73,21 @@ public class datiStato
         int media=(max+min)/2;
         
         String nomeInPos =elencoDati.get(media)[2];
-        int risCompare=nomeInPos.substring(0, nome.length()).compareToIgnoreCase(nome);
+        int risCompare=nomeInPos.substring(0, min(nomeInPos.length(),nome.length())).compareToIgnoreCase(nome);
         
         if(risCompare<0)
         {
             if(media==min)
                 return -1;
             else
-                return ricercaPrecisa(nome, media+1, max);
+                return ricercaPrecisa(nome, media, max);
         }
         else if(risCompare>0)
         {
             if(media==max)
                 return -1;
             else
-                return ricercaPrecisa(nome, min, media-1);
+                return ricercaPrecisa(nome, min, media);
         }
         else return media;
         
