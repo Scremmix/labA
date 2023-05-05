@@ -4,21 +4,43 @@
  */
 package test;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author alesc
  */
-public class Main extends javax.swing.JFrame {
+public class RicercaDati extends javax.swing.JFrame {
 
     /**
      * Creates new form JFrameTest
      */
-    public Main() {
+    private ArrayList<datiStato> mondo=new ArrayList<datiStato>();
+    
+    public RicercaDati(int mod) {
+        this.modalita=mod;
         initComponents();
+        switch(modalita)
+        {
+            case 1 -> {
+                CoordinatesX.setText("Nome località (inglese)");
+                CoordinatesY.setText("Nome Stato (inglese)");
+            }
+            case 2 -> {
+                CoordinatesX.setText("Latitudine (N/S)");
+                CoordinatesY.setText("Longitudine (E/O)");
+            }
+        }
+        RicercaDati.this.revalidate();
+        RicercaDati.this.repaint();
     }
-
+    private int modalita;
+    //1= stato e nome
+    //2= coordinate
+    
+    public int modalitaAttiva()
+    {return this.modalita;}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,9 +70,6 @@ public class Main extends javax.swing.JFrame {
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jScrollPane2 = new javax.swing.JScrollPane();
         centerTable = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        SearchTypeSelect = new javax.swing.JComboBox<>();
-        TypeSwitchButton = new javax.swing.JButton();
         CoordinatesX = new javax.swing.JTextField();
         CoordinatesY = new javax.swing.JTextField();
         DataSearchButton = new javax.swing.JButton();
@@ -191,17 +210,6 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Search data by:");
-
-        SearchTypeSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "location name", "coordinates"}));
-
-        TypeSwitchButton.setText("Search...");
-        TypeSwitchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TypeSwitchButtonActionPerformed(evt);
-            }
-        });
-
         CoordinatesX.setText("X coordinates");
         CoordinatesX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -297,19 +305,11 @@ public class Main extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(SearchTypeSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TypeSwitchButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(CoordinatesX, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(CoordinatesY, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(DataSearchButton)))
+                        .addComponent(CoordinatesX, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CoordinatesY, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(DataSearchButton)
                         .addContainerGap(112, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -325,47 +325,25 @@ public class Main extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TypeSwitchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(SearchTypeSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CoordinatesX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CoordinatesY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DataSearchButton))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(areaToDisplay))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         CoordinatesX.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void TypeSwitchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TypeSwitchButtonActionPerformed
-        // TODO add your handling code here:
-        switch(SearchTypeSelect.getSelectedIndex())
-        {
-            case 0 -> {
-                CoordinatesX.setText("Nome località (inglese)");
-                CoordinatesY.setText("Nome Stato (inglese)");
-            }
-            case 1 -> {
-                CoordinatesX.setText("Latitudine (N/S)");
-                CoordinatesY.setText("Longitudine (E/O)");
-            }
-        }
-        Main.this.revalidate();
-        Main.this.repaint();
-    }//GEN-LAST:event_TypeSwitchButtonActionPerformed
 
     private void CoordinatesXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CoordinatesXActionPerformed
         // TODO add your handling code here:
@@ -407,10 +385,31 @@ public class Main extends javax.swing.JFrame {
 
     private void DataSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataSearchButtonActionPerformed
         // TODO add your handling code here:
-        ddtm.setRowCount(0);
-        ddtm.addRow(
-                new Object[] {"Albavilla", "Italy", 45.8003800, 9.1850400}
-        );
+        if(CoordinatesX.getText().compareTo("")==0)
+        {
+            switch(modalita)
+            {
+                case 1 -> {
+                    JOptionPane.showMessageDialog(rootPane, "Il campo per il nome del paese è vuoto.");
+                }
+                case 2 -> {
+                    JOptionPane.showMessageDialog(rootPane, "Il campo per la latitudine è vuoto.");
+                }
+            }
+        }
+        else if(CoordinatesY.getText().compareTo("")==0)
+        {
+            switch(modalita)
+            {
+                case 1 -> {
+                    JOptionPane.showMessageDialog(rootPane, "Il campo per il nome dello stato è vuoto.");
+                }
+                case 2 -> {
+                    JOptionPane.showMessageDialog(rootPane, "Il campo per la longitudine è vuoto.");
+                }
+            }
+        }
+        else{}
     }//GEN-LAST:event_DataSearchButtonActionPerformed
 
     private void dataToDisplayTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataToDisplayTableMouseClicked
@@ -442,20 +441,22 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RicercaDati.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RicercaDati.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RicercaDati.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RicercaDati.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new Main().setVisible(true);
+            new RicercaDati(1).setVisible(true);
         });
     }
 
@@ -484,8 +485,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton DataSearchButton;
     private javax.swing.JMenuItem Login;
     private javax.swing.JMenuItem Register;
-    private javax.swing.JComboBox<String> SearchTypeSelect;
-    private javax.swing.JButton TypeSwitchButton;
     private javax.swing.JLabel areaToDisplay;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTable centerTable;
@@ -501,7 +500,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JFrame jFrame6;
     private javax.swing.JFrame jFrame7;
     private javax.swing.JFrame jFrame8;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
