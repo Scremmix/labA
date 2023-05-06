@@ -87,6 +87,11 @@ public class Main extends javax.swing.JFrame {
 
         nuovaRilevazione.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nuovaRilevazione.setText("<html>\n<p style=\"text-align: center\">Crea nuova <br/>rilevazione</p>");
+        nuovaRilevazione.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuovaRilevazioneActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,6 +190,17 @@ public class Main extends javax.swing.JFrame {
             formCerca.setVisible(true);
         }
     }//GEN-LAST:event_effettuaRicercaActionPerformed
+
+    private void nuovaRilevazioneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuovaRilevazioneActionPerformed
+        // TODO add your handling code here:if(!Utente.loggato())
+        if(Utente.loggato())
+        {
+            DatiInserimentoPopup nuovaRilevazioneForm = new DatiInserimentoPopup();
+            nuovaRilevazioneForm.setVisible(true);
+        }
+        else
+            JOptionPane.showMessageDialog(rootPane, "Operazione limitata agli utenti loggati.");
+    }//GEN-LAST:event_nuovaRilevazioneActionPerformed
 
     /**
      * @param args the command line arguments
