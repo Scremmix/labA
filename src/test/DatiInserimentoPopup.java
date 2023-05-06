@@ -30,137 +30,152 @@ public class DatiInserimentoPopup extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        gruppoTipiValori = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        Umidità = new javax.swing.JLabel();
-        Vento = new javax.swing.JLabel();
-        Pressione = new javax.swing.JLabel();
-        Precipitazioni = new javax.swing.JLabel();
-        Altitudine_ghiacciai = new javax.swing.JLabel();
-        Massa_ghiacciai = new javax.swing.JLabel();
-        Umidità_score = new java.awt.Choice();
-        Altitudine_score = new java.awt.Choice();
-        Temperatura_score = new java.awt.Choice();
-        Temporale1 = new javax.swing.JLabel();
-        Pressione_score = new java.awt.Choice();
-        Vento_score2 = new java.awt.Choice();
-        Precipitazioni_score = new java.awt.Choice();
-        Massa_score = new java.awt.Choice();
+        ventoRB = new javax.swing.JRadioButton();
+        pressioneRB = new javax.swing.JRadioButton();
+        umiditaRB = new javax.swing.JRadioButton();
+        temperaturaRB = new javax.swing.JRadioButton();
+        precipitazioniRB = new javax.swing.JRadioButton();
+        massaRB = new javax.swing.JRadioButton();
+        altitudineRB = new javax.swing.JRadioButton();
+        valoreRilevazione = new javax.swing.JSlider();
+        jLabel2 = new javax.swing.JLabel();
+        valoreSlider = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        notePanel = new javax.swing.JTextPane();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Inserimento Dati");
 
-        Umidità.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Umidità.setText("Umidità");
+        ventoRB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ventoRB.setText("Vento");
 
-        Vento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Vento.setText("Vento");
+        pressioneRB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pressioneRB.setText("Pressione");
 
-        Pressione.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Pressione.setText("Pressione");
+        umiditaRB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        umiditaRB.setText("Umidità");
 
-        Precipitazioni.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Precipitazioni.setText("Precipitazioni");
+        temperaturaRB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        temperaturaRB.setText("Temperatura");
 
-        Altitudine_ghiacciai.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Altitudine_ghiacciai.setText("Altitudine dei ghiacciai");
+        precipitazioniRB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        precipitazioniRB.setText("Precipitazioni");
 
-        Massa_ghiacciai.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Massa_ghiacciai.setText("Massa dei ghiacciai");
+        massaRB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        massaRB.setText("Massa dei ghiacciai");
 
-        Temporale1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Temporale1.setText("Temperatura");
+        altitudineRB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        altitudineRB.setText("Altitudine dei ghiacciai");
+
+        valoreRilevazione.setMaximum(5);
+        valoreRilevazione.setMinimum(1);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Valore:");
+
+        valoreSlider.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        valoreSlider.setText("x");
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setText("<html>\n<p style=\"text-align: center\">Salva nuova <br/>rilevazione</p>");
+
+        jScrollPane1.setViewportView(notePanel);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("Le tue note:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(345, 345, 345)
-                        .addComponent(jLabel1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Umidità, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Pressione, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Vento, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Temporale1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(49, 49, 49)
+                            .addComponent(precipitazioniRB)
+                            .addComponent(ventoRB)
+                            .addComponent(umiditaRB)
+                            .addComponent(pressioneRB)
+                            .addComponent(temperaturaRB)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(valoreRilevazione, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(valoreSlider))
+                            .addComponent(massaRB)
+                            .addComponent(altitudineRB))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Umidità_score, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Pressione_score, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Vento_score2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Massa_ghiacciai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Altitudine_ghiacciai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Precipitazioni, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Temperatura_score, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Altitudine_score, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Precipitazioni_score, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Massa_score, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(158, 158, 158))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(50, 50, 50))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(315, 315, 315)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Vento)
-                            .addComponent(Precipitazioni, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addComponent(Vento_score2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Precipitazioni_score, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Altitudine_ghiacciai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Altitudine_score, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Umidità, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Umidità_score, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Pressione_score, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Pressione)
-                    .addComponent(Massa_ghiacciai)
-                    .addComponent(Massa_score, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ventoRB)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Temperatura_score, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(363, 363, 363))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Temporale1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(umiditaRB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pressioneRB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(temperaturaRB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(precipitazioniRB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(altitudineRB))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(massaRB)
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(valoreRilevazione, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(valoreSlider))
+                .addGap(59, 59, 59)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(107, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Altitudine_ghiacciai;
-    private java.awt.Choice Altitudine_score;
-    private javax.swing.JLabel Massa_ghiacciai;
-    private java.awt.Choice Massa_score;
-    private javax.swing.JLabel Precipitazioni;
-    private java.awt.Choice Precipitazioni_score;
-    private javax.swing.JLabel Pressione;
-    private java.awt.Choice Pressione_score;
-    private java.awt.Choice Temperatura_score;
-    private javax.swing.JLabel Temporale1;
-    private javax.swing.JLabel Umidità;
-    private java.awt.Choice Umidità_score;
-    private javax.swing.JLabel Vento;
-    private java.awt.Choice Vento_score2;
+    private javax.swing.JRadioButton altitudineRB;
+    private javax.swing.ButtonGroup gruppoTipiValori;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton massaRB;
+    private javax.swing.JTextPane notePanel;
+    private javax.swing.JRadioButton precipitazioniRB;
+    private javax.swing.JRadioButton pressioneRB;
+    private javax.swing.JRadioButton temperaturaRB;
+    private javax.swing.JRadioButton umiditaRB;
+    private javax.swing.JSlider valoreRilevazione;
+    private javax.swing.JLabel valoreSlider;
+    private javax.swing.JRadioButton ventoRB;
     // End of variables declaration//GEN-END:variables
 
 }
