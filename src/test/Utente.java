@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  */
 public class Utente {
     
-    private static String nomeUtente, password, nome, cognome;
+    private static String nomeUtente, password, nome, cognome,idCentro;
     public Utente()
     {
         nomeUtente= null;
@@ -26,16 +26,17 @@ public class Utente {
         cognome= null;
     }
     
-    public static boolean login(String nomeUtente, String password)
+    public static boolean login(String nomeUtente, String password) throws utenteException
     {
         if(!loggato())
         {
-            String [] fullName=Utente.cerca(nomeUtente, password);
-            if(fullName!=null){
+            String[] rigaUtente=Utente.cerca(nomeUtente, password);
+            if(rigaUtente!=null){
                     Utente.nomeUtente=nomeUtente;
                     Utente.password=password;
-                    Utente.nome=fullName[0];
-                    Utente.cognome=fullName[1];
+                    Utente.nome=rigaUtente[0];
+                    Utente.cognome=rigaUtente[1];
+                    Utente.idCentro=rigaUtente[6];
                     return true;
             }
             return false;
@@ -46,6 +47,9 @@ public class Utente {
     
     public static String getUsername()
     {return Utente.nome+" "+Utente.cognome;}
+    
+    public static String getCentro()
+    {return Utente.idCentro;}
     
     public static boolean loggato()
     {
@@ -83,7 +87,7 @@ public class Utente {
         }
     }
     
-    private static String[] cerca(String nomeUtente, String pw){
+    private static String[] cerca(String nomeUtente, String pw)throws utenteException{
         try {
             FileReader read = new FileReader("datafiles/OperatoriRegistrati.csv");        //legge il file, riga per riga, prende ogni volta una riga in esame
             Scanner input = new Scanner(read);                                                //separa con "#" controlla con la stringa generata solo le 2 posizioni,
@@ -91,11 +95,10 @@ public class Utente {
                 String line = input.nextLine();
                 String[] parts = line.split("#");
                     if (parts[4].contains(nomeUtente) && parts[5].contains(pw))
-                        return new String[] {parts[0],parts[1]};
+                        return parts;
                 }
         }catch(FileNotFoundException ex){
-            System.out.println("Impossibile trovare il file contenente gli utenti.");
-            return null;
+            throw new utenteException("Impossibile trovare il file contenente gli utenti.");
         }
         return null;
     }

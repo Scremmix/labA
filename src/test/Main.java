@@ -195,7 +195,7 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:if(!Utente.loggato())
         if(Utente.loggato())
         {
-            DatiInserimentoPopup nuovaRilevazioneForm = new DatiInserimentoPopup();
+            RilevazionePopup nuovaRilevazioneForm = new RilevazionePopup();
             nuovaRilevazioneForm.setVisible(true);
         }
         else
