@@ -37,12 +37,12 @@ public class DataDisplay extends javax.swing.JFrame {
     /**
      * Creates new form DataForm
      */
-    private String idArea;
+    private Long idArea;
     
-    public DataDisplay(String idarea) {
+    public DataDisplay(Long idArea) {
         initComponents();
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        this.idArea=idarea;
+        this.idArea=idArea;
         for(javax.swing.table.DefaultTableModel ddtm : tableModArray)
             ddtm.setRowCount(0);
         jTable10.getColumnModel().getColumn(3).setCellRenderer(new WordWrapCellRenderer());
@@ -601,7 +601,7 @@ public class DataDisplay extends javax.swing.JFrame {
                 while(input.hasNextLine()) {
                     String line = input.nextLine();
                     String[] parts = line.split("#");
-                    if (parts[1].equals(this.idArea))
+                    if (parts[1].equals(this.idArea.toString()))
                         tableModArray[Integer.parseInt(parts[4])].addRow
                             (new Object[] {parts[2],parts[3],parts[5],parts[6]});
                 }

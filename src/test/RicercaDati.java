@@ -21,7 +21,7 @@ public class RicercaDati extends javax.swing.JFrame {
      */
     private ArrayList<datiStato> mondoNomi=null;
     private ArrayList<String[]> mondoCoord=null;
-    private int localitaSelezionataID=-1;
+    private String[] rigaSelezionata=null;
     
     private datiStato cercaStato(String nomeStato)
     {
@@ -54,6 +54,7 @@ public class RicercaDati extends javax.swing.JFrame {
                     caricaPerCoord();
                 }
             }
+            rigaSelezionata=null;
         }
     }
     public void caricaPerNomi()
@@ -177,18 +178,6 @@ public class RicercaDati extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(dataToDisplayTable);
         dataToDisplayTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (dataToDisplayTable.getColumnModel().getColumnCount() > 0) {
-            dataToDisplayTable.getColumnModel().getColumn(0).setMinWidth(50);
-            dataToDisplayTable.getColumnModel().getColumn(0).setMaxWidth(500);
-            dataToDisplayTable.getColumnModel().getColumn(1).setMinWidth(50);
-            dataToDisplayTable.getColumnModel().getColumn(1).setMaxWidth(500);
-            dataToDisplayTable.getColumnModel().getColumn(2).setMinWidth(130);
-            dataToDisplayTable.getColumnModel().getColumn(2).setPreferredWidth(150);
-            dataToDisplayTable.getColumnModel().getColumn(2).setMaxWidth(170);
-            dataToDisplayTable.getColumnModel().getColumn(3).setMinWidth(130);
-            dataToDisplayTable.getColumnModel().getColumn(3).setPreferredWidth(150);
-            dataToDisplayTable.getColumnModel().getColumn(3).setMaxWidth(170);
-        }
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Area selezionata:");
@@ -306,7 +295,25 @@ public class RicercaDati extends javax.swing.JFrame {
                     }
                 }
                 case 2 -> {
-                    JOptionPane.showMessageDialog(rootPane, "Work in progress.");
+                    ArrayList<String[]> elencoLocalita=new ArrayList<>();
+                    try{for(String[] riga: mondoCoord)
+                    {
+                        String[] coordString=riga[5].split(", ");
+                        Double[] coordDouble={Double.valueOf(coordString[0]),Double.valueOf(coordString[1])};
+                        Double[] coordInsDouble={Double.valueOf(Valore1.getText().replace(",", ".")),Double.valueOf(Valore2.getText().replace(",", "."))};
+                        if(
+                                (coordDouble[0]-coordInsDouble[0])<=0.4 && (coordDouble[0]-coordInsDouble[0])>=-0.4
+                                &&
+                                (coordDouble[1]-coordInsDouble[1])<=0.4 && (coordDouble[1]-coordInsDouble[1])>=-0.4
+                          )
+                            elencoLocalita.add(riga);
+                    }
+                    if(elencoLocalita.isEmpty())
+                        JOptionPane.showMessageDialog(rootPane, "Nessuna località trovata nelle vicinanze.");
+                    else
+                        mostraInTabella(elencoLocalita);
+                    }catch(NumberFormatException e)
+                    {JOptionPane.showMessageDialog(rootPane, "Formato coordinate invalido, usa ',' o '.' per separare.");}
                 }
             }
         }
@@ -320,7 +327,7 @@ public class RicercaDati extends javax.swing.JFrame {
         {
             coordinateTemp=parti[5].split(",");
             ddtm.addRow
-                (new Object[] {parti[2]+", ID: "+parti[0],parti[4],Double.parseDouble(coordinateTemp[0]),Double.parseDouble(coordinateTemp[1])});
+                (new Object[] {parti[2],parti[4],Long.valueOf(parti[0]),Double.valueOf(coordinateTemp[0]),Double.valueOf(coordinateTemp[1])});
         }
     }
     private void dataToDisplayTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataToDisplayTableMouseClicked
@@ -331,7 +338,7 @@ public class RicercaDati extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        DataDisplay showData = new DataDisplay("3178229");
+        DataDisplay showData = new DataDisplay(Long.valueOf(ddtm.getValueAt(dataToDisplayTable.getSelectedRow(), 2).toString()));
         showData.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -374,10 +381,10 @@ public class RicercaDati extends javax.swing.JFrame {
     javax.swing.table.DefaultTableModel ddtm = new javax.swing.table.DefaultTableModel(
     new Object [][] {},tableHeader) {
     Class[] types = new Class [] {
-        java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class
+        java.lang.String.class, java.lang.String.class, java.lang.Long.class, java.lang.Double.class, java.lang.Double.class
     };
     boolean[] canEdit = new boolean [] {
-        false, false, false, false
+        false, false, false, false, false
     };
 
     public Class getColumnClass(int columnIndex) {
@@ -388,7 +395,7 @@ public class RicercaDati extends javax.swing.JFrame {
         return canEdit [columnIndex];
     }};
     
-    private static String[] tableHeader = new String [] {"Località", "Stato", "Latitudine", "Longitudine"};
+    private static String[] tableHeader = new String [] {"Località", "Stato", "ID", "Latitudine", "Longitudine"};
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Campo1;
