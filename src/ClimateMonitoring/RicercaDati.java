@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package test;
+package ClimateMonitoring;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -115,7 +115,7 @@ public class RicercaDati extends javax.swing.JFrame {
     }
     public RicercaDati() {
         initComponents();
-        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+            this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         RicercaDati.this.revalidate();
         RicercaDati.this.repaint();
@@ -145,6 +145,7 @@ public class RicercaDati extends javax.swing.JFrame {
         areaToDisplay = new javax.swing.JLabel();
         Campo1 = new javax.swing.JLabel();
         Campo2 = new javax.swing.JLabel();
+        annullaButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -189,6 +190,14 @@ public class RicercaDati extends javax.swing.JFrame {
 
         Campo2.setText("Campo2");
 
+        annullaButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        annullaButton.setText("Annulla");
+        annullaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                annullaButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -200,8 +209,10 @@ public class RicercaDati extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(annullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39)
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(areaToDisplay)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -234,12 +245,14 @@ public class RicercaDati extends javax.swing.JFrame {
                     .addComponent(Valore2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DataSearchButton))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(areaToDisplay)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(annullaButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(areaToDisplay)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(14, 14, 14))
         );
 
@@ -342,6 +355,11 @@ public class RicercaDati extends javax.swing.JFrame {
         showData.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void annullaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_annullaButtonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_annullaButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -403,6 +421,7 @@ public class RicercaDati extends javax.swing.JFrame {
     private javax.swing.JButton DataSearchButton;
     private javax.swing.JTextField Valore1;
     private javax.swing.JTextField Valore2;
+    private javax.swing.JButton annullaButton;
     private javax.swing.JLabel areaToDisplay;
     private javax.swing.JTable dataToDisplayTable;
     private javax.swing.JButton jButton1;

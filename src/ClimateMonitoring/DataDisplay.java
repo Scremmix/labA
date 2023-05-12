@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package test;
+package ClimateMonitoring;
 
 import java.awt.Component;
 import java.io.FileNotFoundException;
@@ -124,6 +124,7 @@ public class DataDisplay extends javax.swing.JFrame {
         jLabel73 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTable70 = new javax.swing.JTable();
+        chiudiButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -558,6 +559,13 @@ public class DataDisplay extends javax.swing.JFrame {
 
         dataTypeContainer.addTab("Massa dei ghiacciai", jPanel7);
 
+        chiudiButton.setText("Chiudi");
+        chiudiButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chiudiButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -565,12 +573,16 @@ public class DataDisplay extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dataTypeContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(dataTypeContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(24, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(locationSpecifics)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addComponent(locationSpecifics)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(chiudiButton)
+                        .addGap(107, 107, 107))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -578,14 +590,20 @@ public class DataDisplay extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(locationSpecifics))
+                    .addComponent(locationSpecifics)
+                    .addComponent(chiudiButton))
                 .addGap(18, 18, 18)
                 .addComponent(dataTypeContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void chiudiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chiudiButtonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_chiudiButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -786,6 +804,7 @@ public class DataDisplay extends javax.swing.JFrame {
     
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton chiudiButton;
     private javax.swing.JTabbedPane dataTypeContainer;
     private javax.swing.JLabel dataValue1;
     private javax.swing.JLabel dataValue2;

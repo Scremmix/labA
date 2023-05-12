@@ -2,28 +2,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Exception.java to edit this template
  */
-package test;
+package ClimateMonitoring;
 
 /**
  *
  * @author Lenovo
  */
-public class datiStatoException extends Exception{
+public class utenteException extends Exception{
 
     /**
-     * Creates a new instance of <code>datiStatoException</code> without detail
+     * Creates a new instance of <code>utenteException</code> without detail
      * message.
      */
-    public datiStatoException() {
+    public utenteException() {
     }
 
     /**
-     * Constructs an instance of <code>datiStatoException</code> with the
-     * specified detail message.
+     * Constructs an instance of <code>utenteException</code> with the specified
+     * detail message.
      *
      * @param msg the detail message.
      */
-    public datiStatoException(String msg) {
+    public utenteException(String msg) {
         super(msg);
     }
 }

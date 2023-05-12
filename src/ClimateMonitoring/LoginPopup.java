@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package test;
+package ClimateMonitoring;
 
 import javax.swing.JOptionPane;
 
@@ -17,7 +17,7 @@ public class LoginPopup extends javax.swing.JFrame {
      */
     public LoginPopup() {
         initComponents();
-        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -113,12 +113,17 @@ public class LoginPopup extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(!Utente.login(username.getText(), new String(password.getPassword())))
-            JOptionPane.showMessageDialog(rootPane, "Combinazione utente password non valida.");
-        else
+        try{
+            if(!Utente.login(username.getText(), new String(password.getPassword())))
+                JOptionPane.showMessageDialog(rootPane, "Combinazione utente password non valida.");
+            else
+            {
+                JOptionPane.showMessageDialog(rootPane, "Login eseguito con successo.");
+                this.setVisible(false);
+            }
+        }catch(utenteException e)
         {
-            JOptionPane.showMessageDialog(rootPane, "Login eseguito con successo.");
-            this.setVisible(false);
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

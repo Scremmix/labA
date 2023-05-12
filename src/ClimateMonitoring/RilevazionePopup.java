@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package test;
+package ClimateMonitoring;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -30,6 +30,7 @@ public class RilevazionePopup extends javax.swing.JFrame {
         gruppoTipoRilevazione.add(rbVento);
         xSlider.setText(""+valoreSlider.getValue());
         
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         String[] arrayLocalID;
         try {
@@ -44,7 +45,6 @@ public class RilevazionePopup extends javax.swing.JFrame {
         }catch(FileNotFoundException ex){
             JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile trovare gli utenti regstrati.");
         }
-        
         
         ArrayList<String[]> datiLocalita= new ArrayList<String[]>();
         //serve ricerca per ID nelle località
@@ -165,6 +165,11 @@ public class RilevazionePopup extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton1.setText("Annulla");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton2.setText("Invia");
@@ -272,6 +277,11 @@ public class RilevazionePopup extends javax.swing.JFrame {
         nomeLocalita.setText(tabellaLocalita.getValueAt(tabellaLocalita.getSelectedRow(), 0)
                 +", "+tabellaLocalita.getValueAt(tabellaLocalita.getSelectedRow(), 1));
     }//GEN-LAST:event_tabellaLocalitaMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
