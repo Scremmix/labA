@@ -39,6 +39,9 @@ public class DataDisplay extends javax.swing.JFrame {
      */
     private Long idArea;
     
+    public void impostaLocalita(String localita)
+    {this.locationSpecifics.setText(localita);}
+    
     public DataDisplay(Long idArea) {
         initComponents();
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
@@ -143,7 +146,6 @@ public class DataDisplay extends javax.swing.JFrame {
         jLabel1.setText("Tabella dati per");
 
         locationSpecifics.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        locationSpecifics.setText("undefined");
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Valore medio:");

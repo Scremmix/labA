@@ -24,6 +24,7 @@ public class Utente {
         password= null;
         nome= null;
         cognome= null;
+        idCentro=null;
     }
     
     public static boolean login(String nomeUtente, String password) throws utenteException

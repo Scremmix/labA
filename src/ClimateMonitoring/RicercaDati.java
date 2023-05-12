@@ -21,7 +21,6 @@ public class RicercaDati extends javax.swing.JFrame {
      */
     private ArrayList<datiStato> mondoNomi=null;
     private ArrayList<String[]> mondoCoord=null;
-    private String[] rigaSelezionata=null;
     
     private datiStato cercaStato(String nomeStato)
     {
@@ -54,7 +53,6 @@ public class RicercaDati extends javax.swing.JFrame {
                     caricaPerCoord();
                 }
             }
-            rigaSelezionata=null;
         }
     }
     public void caricaPerNomi()
@@ -184,7 +182,6 @@ public class RicercaDati extends javax.swing.JFrame {
         jLabel2.setText("Area selezionata:");
 
         areaToDisplay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        areaToDisplay.setText("undefined");
 
         Campo1.setText("Campo 1");
 
@@ -248,7 +245,7 @@ public class RicercaDati extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(annullaButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addComponent(annullaButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(areaToDisplay)
@@ -351,8 +348,14 @@ public class RicercaDati extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        DataDisplay showData = new DataDisplay(Long.valueOf(ddtm.getValueAt(dataToDisplayTable.getSelectedRow(), 2).toString()));
-        showData.setVisible(true);
+        try{
+            DataDisplay showData = new DataDisplay(Long.valueOf(ddtm.getValueAt(dataToDisplayTable.getSelectedRow(), 2).toString()));
+            showData.setVisible(true);
+            showData.impostaLocalita(
+                ddtm.getValueAt(dataToDisplayTable.getSelectedRow(), 0).toString()
+                + ", " + ddtm.getValueAt(dataToDisplayTable.getSelectedRow(), 1).toString());
+        }catch(ArrayIndexOutOfBoundsException e)
+        {JOptionPane.showMessageDialog(rootPane, "Nessuna area di interesse selezionata.");}
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void annullaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_annullaButtonActionPerformed

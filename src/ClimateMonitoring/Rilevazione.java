@@ -18,6 +18,8 @@ public class Rilevazione {
         if(this.area==null||this.area<0)
             throw new rilevazioneException("Nessuna area selezionata.");
         this.tipoDato=tipoDato;
+        if(tipoDato==-1)
+            throw new rilevazioneException("Nessuna tipologia selezionata.");
         this.valore=valore;
         this.nota=nota;
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -41,7 +43,7 @@ public class Rilevazione {
         this.ora=dtf.format(now);
     }
     
-    public void SalvaRilevazione(){
+    public void salvaRilevazione() throws rilevazioneException{
         try (FileWriter writer = new FileWriter("datafiles/ParametriClimatici.csv",true)) {
             writer.write(
                     centro+"#"+area.toString()+"#"+data+"#"+ora+"#"+tipoDato+"#"+valore+"#"+nota+"\n"
@@ -49,7 +51,7 @@ public class Rilevazione {
             writer.close();
         }
         catch(IOException e){
-                            System.out.println("Errore durante il salvataggio dei dati climatici.");
+             throw new rilevazioneException("Errore durante il salvataggio dei dati climatici.");
         }
     }
 }

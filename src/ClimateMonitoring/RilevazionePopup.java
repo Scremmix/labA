@@ -7,7 +7,12 @@ package ClimateMonitoring;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,23 +37,64 @@ public class RilevazionePopup extends javax.swing.JFrame {
         
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
-        String[] arrayLocalID;
+        String[] arrayLocalID=new String[4];
         try {
-            FileReader read = new FileReader("datafiles/OperatoriRegistrati.csv");        //legge il file, riga per riga, prende ogni volta una riga in esame
-            Scanner input = new Scanner(read);                                                //separa con "#" controlla con la stringa generata solo le 2 posizioni,
-            while(input.hasNextLine()) {                                                            //che ci interessano "nome utente e psw".
+            FileReader read = new FileReader("datafiles/CentroMonitoraggio.csv");
+            Scanner input = new Scanner(read);                                                
+            while(input.hasNextLine()) {                                                            
                 String line = input.nextLine();
                 String[] parts = line.split("#");
-                    if (parts[0].contains(Utente.getCentro()))
-                        arrayLocalID=parts[0].split("@");
+                    if (parts[0].equals(Utente.getCentro()))
+                        arrayLocalID=parts[3].split("@");
                 }
         }catch(FileNotFoundException ex){
-            JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile trovare gli utenti regstrati.");
+            JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile trovare il fole contenente i centri di monitoraggio.");
         }
-        
         ArrayList<String[]> datiLocalita= new ArrayList<String[]>();
-        //serve ricerca per ID nelle località
+        try {
+                FileReader read = new FileReader("datafiles/CoordinateMonitoraggio.csv");   
+                Scanner input = new Scanner(read);                    
+                while(input.hasNextLine()) {
+                    String line = input.nextLine();
+                    String[] parts = line.split("#");
+                    for(String singoloID: arrayLocalID)
+                        if(parts[0].equals(singoloID))
+                            datiLocalita.add(parts);
+                }
+            }
+        catch(FileNotFoundException ex){
+                JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile trovare il file contenente le stazioni di monitoraggio.");
+        }
+        String[] coordinateTemp;
+        for(String[] parti : datiLocalita)
+        {
+            coordinateTemp=parti[5].split(",");
+            ddtm.addRow(
+                new Object[] {parti[2],parti[4],parti[0],Double.valueOf(coordinateTemp[0]),Double.valueOf(coordinateTemp[1])});
+        }
     }
+    
+    javax.swing.table.DefaultTableModel ddtm=new javax.swing.table.DefaultTableModel(
+        new Object [][] {},
+        new String [] {
+        "Località", "Stato", "ID", "Lat.", "Long."
+        }
+    ) {
+        Class[] types = new Class [] {
+            java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class
+        };
+        boolean[] canEdit = new boolean [] {
+            false, false, false, false, false
+        };
+
+        public Class getColumnClass(int columnIndex) {
+            return types [columnIndex];
+        }
+
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return canEdit [columnIndex];
+        }
+    };
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,29 +158,7 @@ public class RilevazionePopup extends javax.swing.JFrame {
 
         jLabel3.setText("Valore:");
 
-        tabellaLocalita.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Località", "Stato", "Lat.", "Long."
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        tabellaLocalita.setModel(ddtm);
         tabellaLocalita.setColumnSelectionAllowed(true);
         tabellaLocalita.getTableHeader().setReorderingAllowed(false);
         tabellaLocalita.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -173,6 +197,11 @@ public class RilevazionePopup extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton2.setText("Invia");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -282,6 +311,50 @@ public class RilevazionePopup extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    public String getSelectedButtonText(ButtonGroup buttonGroup) {
+        for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+
+            if (button.isSelected()) {
+                return button.getText();
+            }
+        }
+
+        return null;
+    }
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int valoreTipo;
+        valoreTipo = switch (getSelectedButtonText(gruppoTipoRilevazione)) {
+            case "Vento" -> 0;
+            case "Umidità" -> 1;
+            case "Pressione" -> 2;
+            case "Temperatura" -> 3;
+            case "Precipitazioni" -> 4;
+            case "Altezza dei ghiacciai" -> 5;
+            case "Massa dei ghiacciai" -> 6;
+            default -> -1;
+        };
+        try {
+            Rilevazione r =new Rilevazione(
+                    Utente.getCentro(),
+                    Long.valueOf(tabellaLocalita.getValueAt(tabellaLocalita.getSelectedRow(), 2).toString()),
+                    valoreTipo,
+                    valoreSlider.getValue(),
+                    jTextPane1.getText()
+            );
+            r.salvaRilevazione();
+            JOptionPane.showMessageDialog(rootPane, "Registrazione salvata con successo.");
+            this.dispose();
+        } catch (rilevazioneException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }
+        catch(NullPointerException ex){
+            JOptionPane.showMessageDialog(rootPane, "Nessuna area selezionata.");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
