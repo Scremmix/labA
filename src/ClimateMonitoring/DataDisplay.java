@@ -616,8 +616,8 @@ public class DataDisplay extends javax.swing.JFrame {
         if(this.idArea!=null)
         {
             try {
-                FileReader read = new FileReader("datafiles/ParametriClimatici.csv");        //legge il file, riga per riga, prende ogni volta una riga in esame
-                Scanner input = new Scanner(read);                                            //separa con "#"
+                FileReader read = new FileReader("datafiles/ParametriClimatici.csv");
+                Scanner input = new Scanner(read);
                 while(input.hasNextLine()) {
                     String line = input.nextLine();
                     String[] parts = line.split("#");

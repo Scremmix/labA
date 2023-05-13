@@ -290,7 +290,6 @@ public class RegisterPopup extends javax.swing.JFrame {
     
     private String trovaIDCentro(String nomeCentro)
     {
-        ArrayList<String[]> risultati= new ArrayList<>();
         for(String[] riga: centriFile)
         {
             if(nomeCentro.equalsIgnoreCase(nomeCentro))
@@ -302,8 +301,8 @@ public class RegisterPopup extends javax.swing.JFrame {
     {
         centriFile=new ArrayList<String[]>();
         try {
-                FileReader read = new FileReader("datafiles/CentroMonitoraggio.csv");   
-                Scanner input = new Scanner(read);                    
+                FileReader read = new FileReader("datafiles/CentroMonitoraggio.csv");
+                Scanner input = new Scanner(read);
                 while(input.hasNextLine()) {
                     String line = input.nextLine();
                     String[] parts = line.split("#");

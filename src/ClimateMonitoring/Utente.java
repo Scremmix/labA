@@ -73,7 +73,6 @@ public class Utente {
         
         if(Utente.cerca(nome, nome)!=null)
             throw new utenteException("Utente con lo stesso ID già esistente.");
-        //salvataggio su file da inserire
         //inserire i file nel formato:
         //nome#cognome#codiceFiscale#email#userID#password#centroID
         try (FileWriter writer = new FileWriter("datafiles/OperatoriRegistrati.csv",true)) {
@@ -90,9 +89,9 @@ public class Utente {
     
     private static String[] cerca(String nomeUtente, String pw)throws utenteException{
         try {
-            FileReader read = new FileReader("datafiles/OperatoriRegistrati.csv");        //legge il file, riga per riga, prende ogni volta una riga in esame
-            Scanner input = new Scanner(read);                                                //separa con "#" controlla con la stringa generata solo le 2 posizioni,
-            while(input.hasNextLine()) {                                                            //che ci interessano "nome utente e psw".
+            FileReader read = new FileReader("datafiles/OperatoriRegistrati.csv");
+            Scanner input = new Scanner(read);
+            while(input.hasNextLine()) {
                 String line = input.nextLine();
                 String[] parts = line.split("#");
                     if (parts[4].contains(nomeUtente) && parts[5].contains(pw))

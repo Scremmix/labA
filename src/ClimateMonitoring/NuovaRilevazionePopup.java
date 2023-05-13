@@ -38,8 +38,8 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
         String[] arrayLocalID=new String[4];
         try {
             FileReader read = new FileReader("datafiles/CentroMonitoraggio.csv");
-            Scanner input = new Scanner(read);                                                
-            while(input.hasNextLine()) {                                                            
+            Scanner input = new Scanner(read);
+            while(input.hasNextLine()) {
                 String line = input.nextLine();
                 String[] parts = line.split("#");
                     if (parts[0].equals(Utente.getCentro()))
@@ -50,8 +50,8 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
         }
         ArrayList<String[]> datiLocalita= new ArrayList<String[]>();
         try {
-                FileReader read = new FileReader("datafiles/CoordinateMonitoraggio.csv");   
-                Scanner input = new Scanner(read);                    
+                FileReader read = new FileReader("datafiles/CoordinateMonitoraggio.csv");
+                Scanner input = new Scanner(read);
                 while(input.hasNextLine()) {
                     String line = input.nextLine();
                     String[] parts = line.split("#");

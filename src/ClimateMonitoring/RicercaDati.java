@@ -86,8 +86,8 @@ public class RicercaDati extends javax.swing.JFrame {
     {
         mondoCoord=new ArrayList<String[]>();
         try {
-                FileReader read = new FileReader("datafiles/CoordinateMonitoraggio.csv");   
-                Scanner input = new Scanner(read);                    
+                FileReader read = new FileReader("datafiles/CoordinateMonitoraggio.csv");
+                Scanner input = new Scanner(read);
                 while(input.hasNextLine()) {
                     String line = input.nextLine();
                     String[] parts = line.split("#");
