@@ -9,8 +9,6 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
@@ -45,7 +43,7 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
                 String line = input.nextLine();
                 String[] parts = line.split("#");
                     if (parts[0].equals(Utente.getCentro()))
-                        arrayLocalID=parts[3].split("@");
+                        arrayLocalID=parts[6].split("@");
                 }
         }catch(FileNotFoundException ex){
             JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile trovare il fole contenente i centri di monitoraggio.");
