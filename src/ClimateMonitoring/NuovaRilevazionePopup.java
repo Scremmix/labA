@@ -19,12 +19,12 @@ import javax.swing.JOptionPane;
  *
  * @author alesc
  */
-public class RilevazionePopup extends javax.swing.JFrame {
+public class NuovaRilevazionePopup extends javax.swing.JFrame {
 
     /**
      * Creates new form RilevazionePopup
      */
-    public RilevazionePopup() {
+    public NuovaRilevazionePopup() {
         initComponents();
         gruppoTipoRilevazione.add(rbAltezzaG);
         gruppoTipoRilevazione.add(rbMassaG);
@@ -373,20 +373,21 @@ public class RilevazionePopup extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RilevazionePopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuovaRilevazionePopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RilevazionePopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuovaRilevazionePopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RilevazionePopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuovaRilevazionePopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RilevazionePopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuovaRilevazionePopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RilevazionePopup().setVisible(true);
+                new NuovaRilevazionePopup().setVisible(true);
             }
         });
     }
