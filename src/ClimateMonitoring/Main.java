@@ -84,6 +84,11 @@ public class Main extends javax.swing.JFrame {
         nuovoCentro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nuovoCentro.setText("<html>\n<p style=\"text-align: center\">Crea nuovo <br/>centro</p>");
         nuovoCentro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        nuovoCentro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuovoCentroActionPerformed(evt);
+            }
+        });
 
         nuovaRilevazione.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nuovaRilevazione.setText("<html>\n<p style=\"text-align: center\">Crea nuova <br/>rilevazione</p>");
@@ -201,6 +206,17 @@ public class Main extends javax.swing.JFrame {
         else
             JOptionPane.showMessageDialog(rootPane, "Operazione limitata agli utenti loggati.");
     }//GEN-LAST:event_nuovaRilevazioneActionPerformed
+
+    private void nuovoCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuovoCentroActionPerformed
+        // TODO add your handling code here:if(Utente.loggato())
+        if(Utente.loggato())
+        {
+            NuovoCentroPopup nuovoCentroForm = new NuovoCentroPopup();
+            nuovoCentroForm.setVisible(true);
+        }
+        else
+            JOptionPane.showMessageDialog(rootPane, "Operazione limitata agli utenti loggati.");
+    }//GEN-LAST:event_nuovoCentroActionPerformed
 
     /**
      * @param args the command line arguments

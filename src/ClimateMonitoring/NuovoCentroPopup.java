@@ -15,6 +15,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
      */
     public NuovoCentroPopup() {
         initComponents();
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**

@@ -170,6 +170,9 @@
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;p style=&quot;text-align: center&quot;&gt;Crea nuovo &lt;br/&gt;centro&lt;/p&gt;"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nuovoCentroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="nuovaRilevazione">
       <Properties>
