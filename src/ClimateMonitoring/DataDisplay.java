@@ -44,7 +44,7 @@ public class DataDisplay extends javax.swing.JFrame {
     
     public DataDisplay(Long idArea) {
         initComponents();
-        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.idArea=idArea;
         for(javax.swing.table.DefaultTableModel ddtm : tableModArray)
             ddtm.setRowCount(0);

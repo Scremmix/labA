@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -32,7 +32,7 @@
                           <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="67" max="32767" attributes="0"/>
                               <Component id="nomeCentroBox" min="-2" pref="210" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -40,18 +40,23 @@
                                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel12" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="capBox" min="-2" pref="210" max="-2" attributes="0"/>
-                                  <Component id="idBox" min="-2" pref="210" max="-2" attributes="0"/>
-                                  <Component id="indirizzoBox" min="-2" pref="210" max="-2" attributes="0"/>
-                                  <Component id="provinciaBox" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
-                                  <Component id="comuneBox" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="capBox" pref="210" max="32767" attributes="0"/>
+                                  <Component id="idBox" pref="210" max="32767" attributes="0"/>
+                                  <Component id="indirizzoBox" pref="210" max="32767" attributes="0"/>
+                                  <Component id="provinciaBox" alignment="0" pref="210" max="32767" attributes="0"/>
+                                  <Component id="comuneBox" alignment="0" pref="210" max="32767" attributes="0"/>
+                                  <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="localitaElenco" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="localitaElenco" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
@@ -68,7 +73,7 @@
                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="LocalitaCerca" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
+                          <Component id="localitaCerca" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
                           <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -118,7 +123,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="idBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="LocalitaCerca" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="localitaCerca" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="statoCerca" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cercaButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -144,16 +149,20 @@
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="provinciaBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="localitaElenco" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="annullaButton" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                                   <Component id="salvaButton" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
@@ -225,14 +234,8 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="localitaTable">
           <Properties>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="5" rowCount="4">
-                <Column editable="false" title="Localit&#xe0;" type="java.lang.String"/>
-                <Column editable="false" title="Stato" type="java.lang.String"/>
-                <Column editable="false" title="ID" type="java.lang.Long"/>
-                <Column editable="false" title="Lat." type="java.lang.Double"/>
-                <Column editable="false" title="Long." type="java.lang.Double"/>
-              </Table>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="ddtm" type="code"/>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="1">
@@ -271,7 +274,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="LocalitaCerca">
+    <Component class="javax.swing.JTextField" name="localitaCerca">
     </Component>
     <Component class="javax.swing.JTextField" name="statoCerca">
     </Component>
@@ -301,6 +304,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cerca"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cercaButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="salvaButton">
       <Properties>
@@ -309,6 +315,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Salva"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salvaButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="annullaButton">
       <Properties>
@@ -317,6 +326,16 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Annulla"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel12">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Stato"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField1">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

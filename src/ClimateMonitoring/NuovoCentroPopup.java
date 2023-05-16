@@ -4,6 +4,14 @@
  */
 package ClimateMonitoring;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alesc
@@ -15,6 +23,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
      */
     public NuovoCentroPopup() {
         initComponents();
+        this.caricaPerNomi();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
@@ -42,7 +51,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
         comuneBox = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         localitaTable = new javax.swing.JTable();
-        LocalitaCerca = new javax.swing.JTextField();
+        localitaCerca = new javax.swing.JTextField();
         statoCerca = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -52,6 +61,8 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
         cercaButton = new javax.swing.JButton();
         salvaButton = new javax.swing.JButton();
         annullaButton = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,32 +81,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
 
         jLabel7.setText("Provincia");
 
-        localitaTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Località", "Stato", "ID", "Lat.", "Long."
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Long.class, java.lang.Double.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        localitaTable.setModel(ddtm);
         localitaTable.setColumnSelectionAllowed(true);
         localitaTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(localitaTable);
@@ -110,12 +96,30 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
         jLabel11.setText("Stato:");
 
         cercaButton.setText("Cerca");
+        cercaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cercaButtonActionPerformed(evt);
+            }
+        });
 
         salvaButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         salvaButton.setText("Salva");
+        salvaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvaButtonActionPerformed(evt);
+            }
+        });
 
         annullaButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         annullaButton.setText("Annulla");
+
+        jLabel12.setText("Stato");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,22 +134,26 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                                 .addComponent(nomeCentroBox, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(37, 37, 37)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(capBox, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(idBox, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(indirizzoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(provinciaBox, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(comuneBox, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel10)
-                            .addComponent(localitaElenco))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(capBox, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                    .addComponent(idBox, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                    .addComponent(indirizzoBox, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                    .addComponent(provinciaBox, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                    .addComponent(comuneBox, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                    .addComponent(jTextField1)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(localitaElenco)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel10)))
                         .addGap(38, 38, 38))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
@@ -158,7 +166,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LocalitaCerca, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(localitaCerca, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +203,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(idBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LocalitaCerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(localitaCerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(statoCerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cercaButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -216,15 +224,18 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(provinciaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(localitaElenco)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(annullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(salvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -235,6 +246,82 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void cercaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cercaButtonActionPerformed
+        // TODO add your handling code here:
+        if(localitaCerca.getText().isBlank()||localitaCerca.getText().isEmpty())
+        {
+            
+            JOptionPane.showMessageDialog(rootPane, "Il campo per il nome del paese è vuoto.");
+                
+        }
+        else if(statoCerca.getText().isBlank()||statoCerca.getText().isEmpty())
+        {
+            
+            JOptionPane.showMessageDialog(rootPane, "Il campo per il nome dello stato è vuoto.");
+                
+                
+        }
+        else{
+            
+                    datiStato statoDiRicerca=cercaStato(statoCerca.getText());
+                    if(statoDiRicerca==null)
+                        JOptionPane.showMessageDialog(rootPane, "Stato non trovato");
+                    else
+                    {
+                        ArrayList<String[]> elencoLocalita=statoDiRicerca.cerca(localitaCerca.getText());
+                        if(elencoLocalita==null)
+                            JOptionPane.showMessageDialog(rootPane, "Combinazione località-Stato non trovata.");
+                        else
+                            mostraInTabella(elencoLocalita);
+                    }
+        }
+    }//GEN-LAST:event_cercaButtonActionPerformed
+
+    private void salvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaButtonActionPerformed
+        // TODO add your handling code here:
+        
+        if(nomeCentroBox.getText().isBlank() ||  nomeCentroBox.getText().isEmpty())
+            JOptionPane.showMessageDialog(rootPane, "Campo del nome invalido");
+        else if(indirizzoBox.getText().isBlank() ||  indirizzoBox.getText().isEmpty())
+            JOptionPane.showMessageDialog(rootPane, "Campo dell'indirizzo invalido");
+        else if(capBox.getText().length() != 5)
+            JOptionPane.showMessageDialog(rootPane, "Campo del cap non valido");               
+            
+        try (FileWriter writer = new FileWriter("datafiles/CentroMonitoraggio.csv",true)) {
+            writer.write(
+                    idBox.getText()+"#"+
+                    nomeCentroBox.getText()+"#"+
+                            indirizzoBox.getText()+"#"+
+                            capBox.getText()+"#"+
+                            comuneBox.getText()+", "+
+                            provinciaBox.getText()+"#"+
+                            "3178229"+"\n"
+                );
+            writer.close();
+        }
+        catch(IOException e){
+             JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile salvare su file");
+                    
+        }
+        
+    }//GEN-LAST:event_salvaButtonActionPerformed
+    
+    private void mostraInTabella(ArrayList<String[]> righe)
+    {
+        ddtm.setRowCount(0);
+        String[] coordinateTemp;
+        for(String[] parti : righe)
+        {
+            coordinateTemp=parti[5].split(",");
+            ddtm.addRow
+                (new Object[] {parti[2],parti[4],Long.valueOf(parti[0]),Double.valueOf(coordinateTemp[0]),Double.valueOf(coordinateTemp[1])});
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -269,9 +356,79 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
             }
         });
     }
+    
+    private ArrayList<datiStato> mondoNomi=null;
+    
+    private datiStato cercaStato(String nomeStato)
+    {
+        if(mondoNomi!=null)
+        {
+            for(datiStato stato: mondoNomi)
+                if(stato.daiNomeStato().equals(nomeStato))
+                    return stato;
+            return null;
+        }
+        else{return null;}
+    }
+    
+    public void caricaPerNomi()
+    {
+        mondoNomi=new ArrayList<datiStato>();
+        try {
+                FileReader read = new FileReader("datafiles/CoordinateMonitoraggio.csv");
+                Scanner input = new Scanner(read);
+                datiStato temp=null;
+                while(input.hasNextLine()) {
+                    String line = input.nextLine();
+                    String[] parts = line.split("#");
+                    temp=cercaStato(parts[4]);
+                    if(temp==null)
+                    {
+                        temp=new datiStato(parts[4]);
+                        mondoNomi.add(temp);
+                    }
+                    try{
+                        temp.inserireLocalita(parts);
+                    } catch (datiStatoException ex) {
+                        JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile caricare la riga con ID: "+parts[0]+".");
+                    }
+                }
+            }
+        catch(FileNotFoundException ex){
+                JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile trovare il file contenente le stazioni di monitoraggio.");
+        }
+    }
+    
+    
+    
+    javax.swing.table.DefaultTableModel ddtm = new javax.swing.table.DefaultTableModel(
+    new Object [][] {
+        {null, null, null, null, null},
+        {null, null, null, null, null},
+        {null, null, null, null, null},
+        {null, null, null, null, null}
+    },
+    new String [] {
+        "Località", "Stato", "ID", "Lat.", "Long."
+    }
+) {
+    Class[] types = new Class [] {
+        java.lang.String.class, java.lang.String.class, java.lang.Long.class, java.lang.Double.class, java.lang.Double.class
+    };
+    boolean[] canEdit = new boolean [] {
+        false, false, false, false, false
+    };
+
+    public Class getColumnClass(int columnIndex) {
+        return types [columnIndex];
+    }
+
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return canEdit [columnIndex];
+    }
+};
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField LocalitaCerca;
     private javax.swing.JButton annullaButton;
     private javax.swing.JTextField capBox;
     private javax.swing.JButton cercaButton;
@@ -281,6 +438,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -290,6 +448,8 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField localitaCerca;
     private javax.swing.JLabel localitaElenco;
     private javax.swing.JTable localitaTable;
     private javax.swing.JTextField nomeCentroBox;
