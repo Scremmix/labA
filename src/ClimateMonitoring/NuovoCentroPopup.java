@@ -25,6 +25,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
         initComponents();
         this.caricaPerNomi();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        localitaAggiungere.setEditable(false);
     }
 
     /**
@@ -56,13 +57,17 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        localitaElenco = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         cercaButton = new javax.swing.JButton();
         salvaButton = new javax.swing.JButton();
         annullaButton = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        statoBox = new javax.swing.JTextField();
+        aggiungiButton = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        localitaSelezionata = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        localitaAggiungere = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,8 +89,13 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
         localitaTable.setModel(ddtm);
         localitaTable.setColumnSelectionAllowed(true);
         localitaTable.getTableHeader().setReorderingAllowed(false);
+        localitaTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                localitaTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(localitaTable);
-        localitaTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        localitaTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         jLabel8.setText("Località:");
 
@@ -112,74 +122,102 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
 
         annullaButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         annullaButton.setText("Annulla");
+        annullaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                annullaButtonActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Stato");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        statoBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                statoBoxActionPerformed(evt);
             }
         });
+
+        aggiungiButton.setText("Aggiungi");
+        aggiungiButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aggiungiButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setText("Località selezionata:");
+
+        localitaAggiungere.setEditable(false);
+        localitaAggiungere.setColumns(20);
+        localitaAggiungere.setRows(10);
+        localitaAggiungere.setMaximumSize(new java.awt.Dimension(369, 34567));
+        jScrollPane3.setViewportView(localitaAggiungere);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                                .addComponent(nomeCentroBox, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(37, 37, 37)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(capBox, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(idBox, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(indirizzoBox, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(provinciaBox, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(comuneBox, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(jTextField1)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(localitaElenco)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10)))
-                        .addGap(38, 38, 38))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(salvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(annullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(localitaCerca, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(statoCerca, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)
-                                .addComponent(cercaButton)))))
-                .addContainerGap(22, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(245, 245, 245))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel10)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2))
+                                    .addGap(37, 37, 37)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(nomeCentroBox, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(capBox, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                            .addComponent(idBox)
+                                            .addComponent(indirizzoBox)
+                                            .addComponent(provinciaBox)
+                                            .addComponent(comuneBox)
+                                            .addComponent(statoBox)))))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(38, 38, 38))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(salvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(annullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(localitaSelezionata)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(localitaCerca))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(statoCerca, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cercaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(aggiungiButton, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))))
+                        .addGap(16, 16, 16))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,27 +225,25 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(nomeCentroBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addGap(7, 7, 7)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addComponent(jLabel11)
+                            .addComponent(nomeCentroBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(cercaButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(idBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(localitaCerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(statoCerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cercaButton))
+                    .addComponent(aggiungiButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
@@ -227,46 +263,39 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                         .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(statoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(localitaElenco)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(annullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(salvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(salvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(annullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13)
+                    .addComponent(localitaSelezionata))
+                .addGap(36, 36, 36))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void statoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statoBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_statoBoxActionPerformed
 
     private void cercaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cercaButtonActionPerformed
         // TODO add your handling code here:
         if(localitaCerca.getText().isBlank()||localitaCerca.getText().isEmpty())
         {
-            
             JOptionPane.showMessageDialog(rootPane, "Il campo per il nome del paese è vuoto.");
-                
         }
         else if(statoCerca.getText().isBlank()||statoCerca.getText().isEmpty())
         {
-            
-            JOptionPane.showMessageDialog(rootPane, "Il campo per il nome dello stato è vuoto.");
-                
-                
+            JOptionPane.showMessageDialog(rootPane, "Il campo per il nome dello stato è vuoto."); 
         }
         else{
-            
                     datiStato statoDiRicerca=cercaStato(statoCerca.getText());
                     if(statoDiRicerca==null)
                         JOptionPane.showMessageDialog(rootPane, "Stato non trovato");
@@ -289,9 +318,36 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
         else if(indirizzoBox.getText().isBlank() ||  indirizzoBox.getText().isEmpty())
             JOptionPane.showMessageDialog(rootPane, "Campo dell'indirizzo invalido");
         else if(capBox.getText().length() != 5)
-            JOptionPane.showMessageDialog(rootPane, "Campo del cap non valido");               
-            
-        try (FileWriter writer = new FileWriter("datafiles/CentroMonitoraggio.csv",true)) {
+            JOptionPane.showMessageDialog(rootPane, "Campo del cap non valido");
+        else if(comuneBox.getText().isBlank() ||  comuneBox.getText().isEmpty())
+            JOptionPane.showMessageDialog(rootPane, "Campo del comune invalido");
+        else if(provinciaBox.getText().length()!=2)
+            JOptionPane.showMessageDialog(rootPane, "Campo della provincia invalido");
+        else if(statoBox.getText().isBlank() || statoBox.getText().isEmpty())
+            JOptionPane.showMessageDialog(rootPane, "Campo dello stato vuoto");
+        else if(cercaStato(statoBox.getText())==null)
+            JOptionPane.showMessageDialog(rootPane, "Stato non trovato");
+        else if(idDaAbbinare.isEmpty())
+            JOptionPane.showMessageDialog(rootPane, "Nessuna località selezionata");  
+        else{
+            boolean continua=true;
+            try {
+                FileReader read = new FileReader("datafiles/CentroMonitoraggio.csv");
+                Scanner input = new Scanner(read);
+                while(input.hasNextLine()) {
+                    String line = input.nextLine();
+                    String[] parts = line.split("#");
+                    if(parts[0].equals(idBox.getText()))
+                        continua=false;
+                }
+            }
+            catch(FileNotFoundException ex){
+                JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile trovare il file contenente le stazioni di monitoraggio.");
+            }
+            if(continua)
+            {
+            String idString=idDaAbbinare.toString().replace(", ", "@").replace("[", "").replace("]", "");
+            try(FileWriter writer = new FileWriter("datafiles/CentroMonitoraggio.csv",true)) {
             writer.write(
                     idBox.getText()+"#"+
                     nomeCentroBox.getText()+"#"+
@@ -299,16 +355,45 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                             capBox.getText()+"#"+
                             comuneBox.getText()+", "+
                             provinciaBox.getText()+"#"+
-                            "3178229"+"\n"
+                            idString+"\n"
                 );
             writer.close();
-        }
-        catch(IOException e){
-             JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile salvare su file");
-                    
-        }
-        
+            JOptionPane.showMessageDialog(rootPane, "Centro creato con successo.");
+            this.dispose();
+            }
+            catch(IOException e){
+                JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile salvare su file");
+        }}}
     }//GEN-LAST:event_salvaButtonActionPerformed
+
+    private void localitaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_localitaTableMouseClicked
+        // TODO add your handling code here
+        int [] righeSelez=localitaTable.getSelectedRows();
+        for(int singolaRiga: righeSelez)
+        {
+            String testoInPiu=ddtm.getValueAt(singolaRiga, 0).toString();
+            localitaSelezionata.setText(testoInPiu);
+        }        
+    }//GEN-LAST:event_localitaTableMouseClicked
+
+    private void annullaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_annullaButtonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_annullaButtonActionPerformed
+
+    ArrayList<Long> idDaAbbinare= new ArrayList<>();
+    
+    private void aggiungiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
+        // TODO add your handling code here:
+        int [] righeSelez=localitaTable.getSelectedRows();
+        for(int singolaRiga: righeSelez)
+            if(!idDaAbbinare.contains(Long.valueOf(ddtm.getValueAt(singolaRiga, 2).toString())))
+            {
+                String testoInPiu=" - "+ddtm.getValueAt(singolaRiga, 0).toString();
+                localitaAggiungere.setText(localitaAggiungere.getText()+testoInPiu);
+                idDaAbbinare.add(Long.valueOf(ddtm.getValueAt(singolaRiga, 2).toString()));
+            }
+    }//GEN-LAST:event_aggiungiButtonActionPerformed
     
     private void mostraInTabella(ArrayList<String[]> righe)
     {
@@ -402,12 +487,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
     
     
     javax.swing.table.DefaultTableModel ddtm = new javax.swing.table.DefaultTableModel(
-    new Object [][] {
-        {null, null, null, null, null},
-        {null, null, null, null, null},
-        {null, null, null, null, null},
-        {null, null, null, null, null}
-    },
+    new Object [][] {},
     new String [] {
         "Località", "Stato", "ID", "Lat.", "Long."
     }
@@ -429,6 +509,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
 };
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton aggiungiButton;
     private javax.swing.JButton annullaButton;
     private javax.swing.JTextField capBox;
     private javax.swing.JButton cercaButton;
@@ -439,6 +520,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -448,13 +530,15 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea localitaAggiungere;
     private javax.swing.JTextField localitaCerca;
-    private javax.swing.JLabel localitaElenco;
+    private javax.swing.JLabel localitaSelezionata;
     private javax.swing.JTable localitaTable;
     private javax.swing.JTextField nomeCentroBox;
     private javax.swing.JTextField provinciaBox;
     private javax.swing.JButton salvaButton;
+    private javax.swing.JTextField statoBox;
     private javax.swing.JTextField statoCerca;
     // End of variables declaration//GEN-END:variables
 }
