@@ -315,6 +315,8 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
         
         if(nomeCentroBox.getText().isBlank() ||  nomeCentroBox.getText().isEmpty())
             JOptionPane.showMessageDialog(rootPane, "Campo del nome invalido");
+        else if(idBox.getText().isBlank() ||  idBox.getText().isEmpty())
+            JOptionPane.showMessageDialog(rootPane, "Campo dell'ID invalido");
         else if(indirizzoBox.getText().isBlank() ||  indirizzoBox.getText().isEmpty())
             JOptionPane.showMessageDialog(rootPane, "Campo dell'indirizzo invalido");
         else if(capBox.getText().length() != 5)
@@ -334,7 +336,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
             try {
                 FileReader read = new FileReader("datafiles/CentroMonitoraggio.csv");
                 Scanner input = new Scanner(read);
-                while(input.hasNextLine()) {
+                while(input.hasNextLine()&&continua) {
                     String line = input.nextLine();
                     String[] parts = line.split("#");
                     if(parts[0].equals(idBox.getText()))
@@ -342,7 +344,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                 }
             }
             catch(FileNotFoundException ex){
-                JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile trovare il file contenente le stazioni di monitoraggio.");
+                JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile trovare il file contenente i centri di monitoraggio.");
             }
             if(continua)
             {
@@ -363,7 +365,10 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
             }
             catch(IOException e){
                 JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile salvare su file");
-        }}}
+            }}
+            else
+                JOptionPane.showMessageDialog(rootPane, "Esiste già un centro con l'ID inserito");
+        }
     }//GEN-LAST:event_salvaButtonActionPerformed
 
     private void localitaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_localitaTableMouseClicked
