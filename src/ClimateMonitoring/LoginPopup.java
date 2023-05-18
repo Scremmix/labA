@@ -7,7 +7,7 @@ package ClimateMonitoring;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * classe utile alla crezione di popup
  * @author alesc
  */
 public class LoginPopup extends javax.swing.JFrame {

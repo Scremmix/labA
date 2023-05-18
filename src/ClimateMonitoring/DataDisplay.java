@@ -20,10 +20,23 @@ import javax.swing.table.TableCellRenderer;
  * @author alesc
  */
 class WordWrapCellRenderer extends JTextArea implements TableCellRenderer {
+
+    /**
+     *
+     */
     WordWrapCellRenderer() {
         setLineWrap(true);
         setWrapStyleWord(true);
     }
+    
+    /**
+     * Metodo utile alla costruzione di tabelle
+     * @param table tabella di x righe e y colonne
+     * @param value contenuto della tabella
+     * @param row x righe
+     * @param column y colonne
+     * @return dati relativi alla costruzione della tabella
+     */
 
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -35,6 +48,11 @@ class WordWrapCellRenderer extends JTextArea implements TableCellRenderer {
         return this;
     }
 }
+
+/**
+ *
+ * @author Lenovo
+ */
 public class DataDisplay extends javax.swing.JFrame {
 
     /**
@@ -42,9 +60,18 @@ public class DataDisplay extends javax.swing.JFrame {
      */
     private Long idArea;
     
+    /**
+     * metodo utilizzato per la selezione di una particolare località
+     * @param localita utile alla specificha della località di interesse 
+     * da parte dell'utente
+     */
     public void impostaLocalita(String localita)
     {this.locationSpecifics.setText(localita);}
     
+    /**
+     *
+     * @param idArea id relativo alla zona di interesse
+     */
     public DataDisplay(Long idArea) {
         initComponents();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -958,6 +985,12 @@ public class DataDisplay extends javax.swing.JFrame {
                 modaLabelArray[i].setText(calcolo.toString());
         }
     }
+
+    /**
+     * metodo utile al calcolo della media dei valori inseriti
+     * @param valori vengono sommati e divisi per il loro numero
+     * @return risultato, ovvero il valore medio
+     */
     private Integer calcolaMedia(ArrayList<Integer> valori)
     {
         Integer risultato=0;
@@ -968,6 +1001,12 @@ public class DataDisplay extends javax.swing.JFrame {
         return risultato;
     }
     
+    /**
+     * metodo dedito al calcolo della mediana dei valori inseriti
+     * @param valori variabile utile alla creazione di un insieme di cui verrà
+     * selezionato il valore centrale
+     * @return valore centrale
+     */
     private Integer calcolaMediana(ArrayList<Integer> valori)
     {
         Collections.sort(valori);
@@ -979,6 +1018,12 @@ public class DataDisplay extends javax.swing.JFrame {
             return valori.get(valori.size()/2);
     }
     
+    /**
+     * metodo utile al calcolo della moda
+     * @param valori variabile contenente numeri di cui verrà selezionato il 
+     * più ricorrente
+     * @return valoe più ricorrente
+     */
     private Integer calcolaModa(ArrayList<Integer> valori)
     {
         Collections.sort(valori);
@@ -1007,6 +1052,9 @@ public class DataDisplay extends javax.swing.JFrame {
             return 0;
     }
     
+    /**
+     * 
+     */
     private void popolaTabelle()
     {
         if(this.idArea!=null)
@@ -1030,9 +1078,16 @@ public class DataDisplay extends javax.swing.JFrame {
     
     
     //modelli delle svariate tabelle
+
+    /**
+     *
+     */
     
     private final String[] tableHeader = new String [] {"Data", "Ora", "Valore", "Note"};
     
+    /**
+     *
+     */
     javax.swing.table.DefaultTableModel ddtm1 = new javax.swing.table.DefaultTableModel(
     new Object [][] {
     },
@@ -1053,6 +1108,9 @@ public class DataDisplay extends javax.swing.JFrame {
     }
     };
     
+    /**
+     *
+     */
     javax.swing.table.DefaultTableModel ddtm2 = new javax.swing.table.DefaultTableModel(
     new Object [][] {
     },tableHeader) {
@@ -1072,6 +1130,9 @@ public class DataDisplay extends javax.swing.JFrame {
     }
     };
     
+    /**
+     *
+     */
     javax.swing.table.DefaultTableModel ddtm3 = new javax.swing.table.DefaultTableModel(
     new Object [][] {
     },tableHeader) {
@@ -1091,6 +1152,9 @@ public class DataDisplay extends javax.swing.JFrame {
     }
     };
     
+    /**
+     *
+     */
     javax.swing.table.DefaultTableModel ddtm4 = new javax.swing.table.DefaultTableModel(
     new Object [][] {
     },tableHeader) {
@@ -1110,6 +1174,9 @@ public class DataDisplay extends javax.swing.JFrame {
     }
     };
     
+    /**
+     *
+     */
     javax.swing.table.DefaultTableModel ddtm5 = new javax.swing.table.DefaultTableModel(
     new Object [][] {
     },tableHeader) {
@@ -1129,6 +1196,9 @@ public class DataDisplay extends javax.swing.JFrame {
     }
     };
     
+    /**
+     *
+     */
     javax.swing.table.DefaultTableModel ddtm6 = new javax.swing.table.DefaultTableModel(
     new Object [][] {
     },tableHeader) {
@@ -1148,6 +1218,9 @@ public class DataDisplay extends javax.swing.JFrame {
     }
     };
     
+    /**
+     *
+     */
     javax.swing.table.DefaultTableModel ddtm7 = new javax.swing.table.DefaultTableModel(
     new Object [][] {
     },tableHeader) {
@@ -1167,6 +1240,9 @@ public class DataDisplay extends javax.swing.JFrame {
     }
     };
     
+    /**
+     *
+     */
     javax.swing.table.DefaultTableModel[] tableModArray = new javax.swing.table.DefaultTableModel[] 
         {ddtm1,ddtm2,ddtm3,ddtm4,ddtm5,ddtm6,ddtm7};
     
