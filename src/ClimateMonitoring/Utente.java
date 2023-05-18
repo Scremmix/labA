@@ -71,7 +71,7 @@ public class Utente {
         if(codiceFiscale.length()!=16)
             throw new utenteException("Il codice fiscale non è valido.");
         
-        if(Utente.cerca(nome, nome)!=null)
+        if(Utente.cerca(nome, password1)!=null)
             throw new utenteException("Utente con lo stesso ID già esistente.");
         //inserire i file nel formato:
         //nome#cognome#codiceFiscale#email#userID#password#centroID
