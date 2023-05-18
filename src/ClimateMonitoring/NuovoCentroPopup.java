@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class NuovoCentroPopup extends javax.swing.JFrame {
 
     /**
-     * Creates new form NuovoCentroPopup
+     * crea un nuovo form NuovoCentroPopup
      */
     public NuovoCentroPopup() {
         initComponents();
@@ -284,7 +284,12 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
     private void statoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statoBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_statoBoxActionPerformed
-
+    
+    /**
+     * Metodo che apporta modifiche alla tabella in base ai risultati della 
+     * ricerca per nome oppure stato e attiva popup in caso di errori
+     * @param evt 
+     */
     private void cercaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cercaButtonActionPerformed
         // TODO add your handling code here:
         if(localitaCerca.getText().isBlank()||localitaCerca.getText().isEmpty())
@@ -309,7 +314,11 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                     }
         }
     }//GEN-LAST:event_cercaButtonActionPerformed
-
+    
+    /**
+     * fa controlli sugli input e salva su file se ogni input è utilizzabile
+     * @param evt 
+     */
     private void salvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaButtonActionPerformed
         // TODO add your handling code here:
         
@@ -389,6 +398,11 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
 
     ArrayList<Long> idDaAbbinare= new ArrayList<>();
     
+    /**
+     * aggiunge l'id della riga selezionata della tabella agli id da 
+     * abbinare
+     * @param evt 
+     */
     private void aggiungiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
         // TODO add your handling code here:
         int [] righeSelez=localitaTable.getSelectedRows();
@@ -404,6 +418,10 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_aggiungiButtonActionPerformed
     
+    /**
+     * mostra i risultati della ricerca in tabella
+     * @param righe righe della tabella in cui verranno mostrati i risultati
+     */
     private void mostraInTabella(ArrayList<String[]> righe)
     {
         ddtm.setRowCount(0);
@@ -418,6 +436,11 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
         
     private ArrayList<datiStato> mondoNomi=null;
     
+    /**
+     * Ricerca del nome dell stato su file
+     * @param nomeStato nome dello stato inserito
+     * @return 
+     */
     private datiStato cercaStato(String nomeStato)
     {
         if(mondoNomi!=null)
@@ -429,6 +452,10 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
         }
         else{return null;}
     }
+    
+    /**
+     * Carica il file conyenente i centri di monitoraggio forniti
+     */
     
     public void caricaPerNomi()
     {

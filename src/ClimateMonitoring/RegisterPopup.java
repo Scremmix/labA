@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 public class RegisterPopup extends javax.swing.JFrame {
 
     /**
-     * Creates new form RegisterPopup
+     * crea un nuovo form RegisterPopup
      */
     public RegisterPopup() {
         initComponents();
@@ -267,7 +267,11 @@ public class RegisterPopup extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * metodo che mostra in tabella i dati inseriti
+     * @param dati dati in questione
+     */
     private void mostraInTabella(ArrayList<String[]> dati)
     {
         ddtm.setRowCount(0);
@@ -277,6 +281,12 @@ public class RegisterPopup extends javax.swing.JFrame {
                 (new Object[] {riga[1],riga[2],riga[4],riga[5]});
         }
     }
+    
+    /**
+     * Ricerca di un centro per nome
+     * @param nomeCentro nome del centro in questione
+     * @return risultati della ricerca
+     */
     private ArrayList<String[]> cercaCentro(String nomeCentro)
     {
         ArrayList<String[]> risultati= new ArrayList<>();
@@ -288,6 +298,11 @@ public class RegisterPopup extends javax.swing.JFrame {
         return risultati;
     }
     
+    /**
+     * Ricerca dell'id di un centro tramite il nome dello stesso
+     * @param nomeCentro nome del centro
+     * @return id del centro oppure null se non esiste
+     */
     private String trovaIDCentro(String nomeCentro)
     {
         for(String[] riga: centriFile)
@@ -297,6 +312,10 @@ public class RegisterPopup extends javax.swing.JFrame {
         }
         return null;
     }
+    
+    /**
+     * Carica il file con i centri
+     */
     private void caricaCentri()
     {
         centriFile=new ArrayList<String[]>();
@@ -313,6 +332,11 @@ public class RegisterPopup extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile trovare il file contenente le stazioni di monitoraggio.");
         }
     }
+    
+    /**
+     * Fa partire la ricerca per il testo in questione
+     * @param evt 
+     */
     
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
         // TODO add your handling code here:
@@ -331,7 +355,11 @@ public class RegisterPopup extends javax.swing.JFrame {
         String selectedCenter = ddtm.getValueAt(centerTable.getSelectedRow(), 0).toString();
         selectedNameDisplay.setText(selectedCenter);
     }//GEN-LAST:event_centerTableMouseClicked
-
+    
+    /**
+     * Metodo utile alla registrazione e alla ricerca di eventuali errori
+     * @param evt 
+     */
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
         try {
             // TODO add your handling code here:

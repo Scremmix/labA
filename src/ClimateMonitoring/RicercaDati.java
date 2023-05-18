@@ -11,7 +11,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Classe utile alla ricerca di nomi e coordinate di zone in analisi
  * @author alesc
  */
 public class RicercaDati extends javax.swing.JFrame {
@@ -22,6 +22,11 @@ public class RicercaDati extends javax.swing.JFrame {
     private ArrayList<datiStato> mondoNomi=null;
     private ArrayList<String[]> mondoCoord=null;
     
+    /**
+     * Metodo utile alla ricerca di stati tramite nome
+     * @param nomeStato nome dello stato in questione
+     * @return
+     */
     private datiStato cercaStato(String nomeStato)
     {
         if(mondoNomi!=null)
@@ -34,6 +39,10 @@ public class RicercaDati extends javax.swing.JFrame {
         else{return null;}
     }
     
+    /**
+     * Ricerca per modalità
+     * @param mod  : nome località, nome stato, latitudine, longitudine
+     */
     public void cambiaModalita(int mod)
     {
         if(this.modalita!=mod)
@@ -55,6 +64,10 @@ public class RicercaDati extends javax.swing.JFrame {
             }
         }
     }
+
+    /**
+     * caricamento su file di dati relativi a determinti centri di monitoraggio
+     */
     public void caricaPerNomi()
     {
         mondoNomi=new ArrayList<datiStato>();
@@ -82,6 +95,10 @@ public class RicercaDati extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile trovare il file contenente le stazioni di monitoraggio.");
         }
     }
+
+    /**
+     * Caricamento dati relativi alle cordinate della zona in analisi
+     */
     public void caricaPerCoord()
     {
         mondoCoord=new ArrayList<String[]>();
@@ -99,6 +116,10 @@ public class RicercaDati extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * resetta le variabili contenenti la copia del file
+     * @param tipo tipologia di modalità iniziale
+     */
     public void resetVarFile(int tipo)
     {
         switch(tipo)
@@ -111,6 +132,10 @@ public class RicercaDati extends javax.swing.JFrame {
             }
         }
     }
+
+    /**
+     * Costruttore di default
+     */
     public RicercaDati() {
         initComponents();
             this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -122,6 +147,10 @@ public class RicercaDati extends javax.swing.JFrame {
     //1= stato e nome
     //2= coordinate
     
+    /**
+     * Metodo utile a richiamare la modalità attualmente attiva
+     * @return modalità attiva
+     */
     public int modalitaAttiva()
     {return this.modalita;}
     /**
@@ -262,6 +291,11 @@ public class RicercaDati extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Valore1ActionPerformed
 
+    /**
+     * Se i parametri sono validi, effettua la ricerca in ase alla modalità
+     * attiva e ne mostra i dati in tabella
+     * @param evt 
+     */
     private void DataSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataSearchButtonActionPerformed
         // TODO add your handling code here:
         if(Valore1.getText().isBlank()||Valore1.getText().isEmpty())
@@ -329,6 +363,10 @@ public class RicercaDati extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_DataSearchButtonActionPerformed
 
+    /**
+     *
+     * @param righe
+     */
     private void mostraInTabella(ArrayList<String[]> righe)
     {
         ddtm.setRowCount(0);
@@ -345,7 +383,11 @@ public class RicercaDati extends javax.swing.JFrame {
         String selectedArea = ddtm.getValueAt(dataToDisplayTable.getSelectedRow(), 0).toString();
         areaToDisplay.setText(selectedArea);
     }//GEN-LAST:event_dataToDisplayTableMouseClicked
-
+    
+    /**
+     * se è stata selezionata una modalità ne mostra le rilevazioni
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try{

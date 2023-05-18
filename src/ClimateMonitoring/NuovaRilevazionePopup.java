@@ -14,13 +14,13 @@ import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * 
  * @author alesc
  */
 public class NuovaRilevazionePopup extends javax.swing.JFrame {
 
     /**
-     * Creates new form RilevazionePopup
+     * Crea un nuovo form di RilevazionePopup
      */
     public NuovaRilevazionePopup() {
         initComponents();
@@ -310,6 +310,11 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * restituisce la stringa del bottone radio selezionato al momento
+     * @param buttonGroup gruppo di bottoni in questione
+     * @return
+     */
     public String getSelectedButtonText(ButtonGroup buttonGroup) {
         for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
             AbstractButton button = buttons.nextElement();
@@ -321,6 +326,11 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
 
         return null;
     }
+    
+    /**
+     * conferma il salvataggio su file tramite un messaggio
+     * @param evt 
+     */
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:

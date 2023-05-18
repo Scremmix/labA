@@ -1041,7 +1041,7 @@ public class DataDisplay extends javax.swing.JFrame {
     }
     
     /**
-     * 
+     * serve per riepire le tabelle con i dati scritti su file
      */
     private void popolaTabelle()
     {
