@@ -341,7 +341,7 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
                     Long.valueOf(tabellaLocalita.getValueAt(tabellaLocalita.getSelectedRow(), 2).toString()),
                     valoreTipo,
                     valoreSlider.getValue(),
-                    jTextPane1.getText()
+                    jTextPane1.getText().replace("\n", " ")
             );
             r.salvaRilevazione();
             JOptionPane.showMessageDialog(rootPane, "Registrazione salvata con successo.");

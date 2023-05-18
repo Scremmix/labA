@@ -395,6 +395,9 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
             if(!idDaAbbinare.contains(Long.valueOf(ddtm.getValueAt(singolaRiga, 2).toString())))
             {
                 String testoInPiu=" - "+ddtm.getValueAt(singolaRiga, 0).toString();
+                if(((testoInPiu.length()+localitaAggiungere.getText().length())*8)/369
+                    >(localitaAggiungere.getText().length()*8)/369)
+                    testoInPiu="\n"+testoInPiu;
                 localitaAggiungere.setText(localitaAggiungere.getText()+testoInPiu);
                 idDaAbbinare.add(Long.valueOf(ddtm.getValueAt(singolaRiga, 2).toString()));
             }
