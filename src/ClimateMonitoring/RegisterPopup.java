@@ -361,8 +361,6 @@ public class RegisterPopup extends javax.swing.JFrame {
 
     private void selectedNameDisplayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectedNameDisplayMouseClicked
         // TODO add your handling code here:
-        String selectedArea = ddtm.getValueAt(centerTable.getSelectedRow(), 0).toString();
-        selectedNameDisplay.setText(selectedArea);
     }//GEN-LAST:event_selectedNameDisplayMouseClicked
     
     javax.swing.table.DefaultTableModel ddtm = new javax.swing.table.DefaultTableModel(
