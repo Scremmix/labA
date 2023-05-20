@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 public class RegisterPopup extends javax.swing.JFrame {
 
     /**
-     * crea un nuovo form RegisterPopup
+     * Crea un nuovo form RegisterPopup
      */
     public RegisterPopup() {
         initComponents();
@@ -269,8 +269,8 @@ public class RegisterPopup extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     /**
-     * metodo che mostra in tabella i dati inseriti
-     * @param dati dati in questione
+     * Metodo che mostra in tabella i dati inseriti
+     * @param dati da mostrare
      */
     private void mostraInTabella(ArrayList<String[]> dati)
     {
@@ -283,9 +283,10 @@ public class RegisterPopup extends javax.swing.JFrame {
     }
     
     /**
-     * Ricerca di un centro per nome
+     * Ricerca di un centro per nome o per una porzione di nome. 
+     * Ritorna un ArrayList vuoto se non è stato trovato alcun risultato.
      * @param nomeCentro nome del centro in questione
-     * @return risultati della ricerca
+     * @return ArrayList contenente le località valide
      */
     private ArrayList<String[]> cercaCentro(String nomeCentro)
     {
@@ -314,7 +315,7 @@ public class RegisterPopup extends javax.swing.JFrame {
     }
     
     /**
-     * Carica il file con i centri
+     * Carica il file contenente i centri di monitoraggio
      */
     private void caricaCentri()
     {
@@ -333,10 +334,6 @@ public class RegisterPopup extends javax.swing.JFrame {
         }
     }
     
-    /**
-     * Fa partire la ricerca per il testo in questione
-     * @param evt 
-     */
     
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
         // TODO add your handling code here:
@@ -344,7 +341,11 @@ public class RegisterPopup extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelButtonActionPerformed
     // TODO add your handling code here:
 
-
+    /**
+     * Fa partire la ricerca per il testo inserito nel TextField
+     * e ne mostra i risultati in tabella
+     * @param evt 
+     */
     private void centerSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_centerSearchButtonActionPerformed
         // TODO add your handling code here:
         mostraInTabella(cercaCentro(centroCerca.getText()));
@@ -357,7 +358,9 @@ public class RegisterPopup extends javax.swing.JFrame {
     }//GEN-LAST:event_centerTableMouseClicked
     
     /**
-     * Metodo utile alla registrazione e alla ricerca di eventuali errori
+     * Metodo utile alla registrazione e alla ricerca di eventuali errori.
+     * Se i parametri inseriti nei vari TextField sono validi, salva
+     * il nuovo utente su file
      * @param evt 
      */
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed

@@ -46,9 +46,6 @@ class WordWrapCellRenderer extends JTextArea implements TableCellRenderer {
  */
 public class DataDisplay extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DataForm
-     */
     private Long idArea;
     
     /**
@@ -929,7 +926,7 @@ public class DataDisplay extends javax.swing.JFrame {
     }//GEN-LAST:event_chiudiButtonActionPerformed
 
     /**
-     * @param args the command line arguments
+     * Calcola le statistiche da mostrare prendendo i dati dalle tabelle
      */
     
     private void popolaStatistiche()
@@ -1041,7 +1038,7 @@ public class DataDisplay extends javax.swing.JFrame {
     }
     
     /**
-     * serve per riepire le tabelle con i dati scritti su file
+     * Serve per riempire le tabelle con i dati scritti su file
      */
     private void popolaTabelle()
     {

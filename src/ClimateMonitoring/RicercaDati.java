@@ -23,9 +23,9 @@ public class RicercaDati extends javax.swing.JFrame {
     private ArrayList<String[]> mondoCoord=null;
     
     /**
-     * Metodo utile alla ricerca di stati tramite nome
+     * Metodo utile alla ricerca di stati tramite il relativo nome
      * @param nomeStato nome dello stato in questione
-     * @return
+     * @return l'oggetto datiStato del relativo stato se esistente, null altrimenti
      */
     private datiStato cercaStato(String nomeStato)
     {
@@ -40,8 +40,8 @@ public class RicercaDati extends javax.swing.JFrame {
     }
     
     /**
-     * Ricerca per modalità
-     * @param mod  : nome località, nome stato, latitudine, longitudine
+     * Modifica il metodo di ricerca
+     * @param mod: 1 per la ricerca nome/Stato, 2 per la ricerca coordinate
      */
     public void cambiaModalita(int mod)
     {
@@ -66,7 +66,8 @@ public class RicercaDati extends javax.swing.JFrame {
     }
 
     /**
-     * caricamento su file di dati relativi a determinti centri di monitoraggio
+     * Caricamento su variabile del file relativo alle località di monitoraggio
+     * pronto per la ricerca per nome/Stato
      */
     public void caricaPerNomi()
     {
@@ -97,7 +98,8 @@ public class RicercaDati extends javax.swing.JFrame {
     }
 
     /**
-     * Caricamento dati relativi alle cordinate della zona in analisi
+     * Caricamento su variabile del file relativo alle località di monitoraggio
+     * pronto per la ricerca per coordinate
      */
     public void caricaPerCoord()
     {
@@ -117,8 +119,8 @@ public class RicercaDati extends javax.swing.JFrame {
     }
     
     /**
-     * resetta le variabili contenenti la copia del file
-     * @param tipo tipologia di modalità iniziale
+     * Resetta le variabili contenenti la copia del file delle località
+     * @param tipo 1: resetta nome/Stato, 2: resetta coordinate
      */
     public void resetVarFile(int tipo)
     {
@@ -148,7 +150,7 @@ public class RicercaDati extends javax.swing.JFrame {
     //2= coordinate
     
     /**
-     * Metodo utile a richiamare la modalità attualmente attiva
+     * Metodo utile a richiamare la modalità di ricerca attualmente attiva
      * @return modalità attiva
      */
     public int modalitaAttiva()
@@ -292,7 +294,7 @@ public class RicercaDati extends javax.swing.JFrame {
     }//GEN-LAST:event_Valore1ActionPerformed
 
     /**
-     * Se i parametri sono validi, effettua la ricerca in ase alla modalità
+     * Se i parametri sono validi, effettua la ricerca in base alla modalità
      * attiva e ne mostra i dati in tabella
      * @param evt 
      */
@@ -364,8 +366,8 @@ public class RicercaDati extends javax.swing.JFrame {
     }//GEN-LAST:event_DataSearchButtonActionPerformed
 
     /**
-     *
-     * @param righe
+     * Mostra in tabella i dati delle località passati per parametro
+     * @param righe di dati da mostrare
      */
     private void mostraInTabella(ArrayList<String[]> righe)
     {
@@ -385,7 +387,7 @@ public class RicercaDati extends javax.swing.JFrame {
     }//GEN-LAST:event_dataToDisplayTableMouseClicked
     
     /**
-     * se è stata selezionata una modalità ne mostra le rilevazioni
+     * Se è stata selezionata una località ne mostra le rilevazioni
      * @param evt 
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

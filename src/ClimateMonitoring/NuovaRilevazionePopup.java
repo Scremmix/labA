@@ -311,9 +311,9 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
-     * restituisce la stringa del bottone radio selezionato al momento
+     * Restituisce la stringa del bottone radio selezionato al momento
      * @param buttonGroup gruppo di bottoni in questione
-     * @return
+     * @return testo del RadioButton selezionato
      */
     public String getSelectedButtonText(ButtonGroup buttonGroup) {
         for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
@@ -328,7 +328,7 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
     }
     
     /**
-     * conferma il salvataggio su file tramite un messaggio
+     * Effettua e eventualmente conferma il salvataggio su file tramite un messaggio
      * @param evt 
      */
     

@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class NuovoCentroPopup extends javax.swing.JFrame {
 
     /**
-     * crea un nuovo form NuovoCentroPopup
+     * Crea un nuovo form NuovoCentroPopup
      */
     public NuovoCentroPopup() {
         initComponents();
@@ -316,7 +316,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
     }//GEN-LAST:event_cercaButtonActionPerformed
     
     /**
-     * fa controlli sugli input e salva su file se ogni input è utilizzabile
+     * Fa controlli sugli input e salva il nuovo centro su file se ogni input è utilizzabile
      * @param evt 
      */
     private void salvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaButtonActionPerformed
@@ -399,8 +399,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
     ArrayList<Long> idDaAbbinare= new ArrayList<>();
     
     /**
-     * aggiunge l'id della riga selezionata della tabella agli id da 
-     * abbinare
+     * Aggiunge l'id della riga selezionata della tabella agli id da abbinare
      * @param evt 
      */
     private void aggiungiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
@@ -419,8 +418,8 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
     }//GEN-LAST:event_aggiungiButtonActionPerformed
     
     /**
-     * mostra i risultati della ricerca in tabella
-     * @param righe righe della tabella in cui verranno mostrati i risultati
+     * Mostra i risultati della ricerca nome/Stato in tabella
+     * @param righe di dati da mostrare in tabella
      */
     private void mostraInTabella(ArrayList<String[]> righe)
     {
@@ -437,9 +436,9 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
     private ArrayList<datiStato> mondoNomi=null;
     
     /**
-     * Ricerca del nome dell stato su file
+     * Ricerca del nome dello stato nella variabile contenente il file delle localita
      * @param nomeStato nome dello stato inserito
-     * @return 
+     * @return oggetto datiStato corrispondente se esiste, null altrimenti
      */
     private datiStato cercaStato(String nomeStato)
     {
@@ -454,7 +453,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
     }
     
     /**
-     * Carica il file conyenente i centri di monitoraggio forniti
+     * Carica il file contenente le località di monitoraggio
      */
     
     public void caricaPerNomi()

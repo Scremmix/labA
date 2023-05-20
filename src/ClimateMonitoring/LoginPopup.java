@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class LoginPopup extends javax.swing.JFrame {
 
     /**
-     * Creates new form LoginPopup
+     * Crea un nuovo LoginPopup
      */
     public LoginPopup() {
         initComponents();
