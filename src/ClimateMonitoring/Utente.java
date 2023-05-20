@@ -12,7 +12,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
- *
+ * Riguarda i processi di login e registrazione degli utenti
  * @author Lenovo
  */
 public class Utente {
@@ -27,6 +27,13 @@ public class Utente {
         idCentro=null;
     }
     
+    /**
+     * Il metodo richiede all'utente i dati utili al login 
+     * @param nomeUtente
+     * @param password
+     * @return stabilisce il fallimento o il successo del login
+     * @throws utenteException
+     */
     public static boolean login(String nomeUtente, String password) throws utenteException
     {
         if(!loggato())
@@ -46,17 +53,45 @@ public class Utente {
     // per esempio, Francesco Totti effettua il login con 7930
     }
     
+    /**
+     * metodo utile a richiamare un determinato username
+     * @return nome e cognome
+     */
     public static String getUsername()
     {return Utente.nome+" "+Utente.cognome;}
     
+    /**
+     * utile a richiamare il nome del centro di monitoraggio
+     * @return id del centro in questione
+     */
     public static String getCentro()
     {return Utente.idCentro;}
     
+    /**
+     * Metodo utile a controllare la validità di nome utente e password, devono 
+     * essere diversi da null
+     * @return valore booleano 
+     */
     public static boolean loggato()
     {
         return !(nomeUtente==null)&&!(password==null);
     }
     
+    /**
+     * metodo utile alla registrazione di nuovi utenti
+     * @param nome del nuovo utente
+     * @param cognome del nuovo utente
+     * @param password1 : primo inserimento di una password
+     * @param password2 : secondo inserimento della password di cui verrà
+     * controllata la corrispondenza con la prima
+     * @param email del nuovo utente
+     * @param userID del nuovo utente 
+     * @param codiceFiscale del nuovo utente
+     * @param idCentro di interesse, utile a sviluppare rilevazioni mirate
+     * @return valore booleano che definisce il successo o il fallimento della 
+     * registrazione
+     * @throws utenteException errore in fase di registrazione
+     */
     public static boolean register(String nome, String cognome, String password1, String password2, String email, String userID, String codiceFiscale, String idCentro) 
             throws utenteException
     {
@@ -87,6 +122,14 @@ public class Utente {
         }
     }
     
+    /**
+     * metodo utile alla ricerca di un utente registrato su file
+     * @param nomeUtente da ricercare
+     * @param pw da ricercare
+     * @return stabilisce il successo o il fallimento della ricerca
+     * @throws utenteException errore nella ricerca del file contenente gli 
+     * utenti
+     */
     private static String[] cerca(String nomeUtente, String pw)throws utenteException{
         try {
             FileReader read = new FileReader("datafiles/OperatoriRegistrati.csv");

@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Salva i dati su file e gestisce le eccezioni del form
+ * @author Lenovo
+ */
 public class Rilevazione {
     private String centro; //esempio: Insubria
     private Long area=Long.valueOf(0); //esempio: 3178229 (ID per l'area di Como, IT)
@@ -11,6 +15,16 @@ public class Rilevazione {
     private String nota;
     private String data, ora;
     
+    /**
+     * Metodo utile ad ottenere i dati necessari ad una particolare rilevazione
+     * @param centro : particolare centro di monitoraggio
+     * @param area : area di interesse su cui sviluppare la rilevazione
+     * @param tipoDato : nel metodo viene verificato che la sua tipologia
+     * numerica sia valida
+     * @param valore : valore effettivo del dato
+     * @param nota : informazioni riguardanti il dato
+     * @throws rilevazioneException : evidenzia eventuali errori
+     */
     public Rilevazione(String centro, Long area, int tipoDato, int valore, String nota) throws rilevazioneException
     {
         this.centro=centro;
@@ -29,6 +43,9 @@ public class Rilevazione {
         this.ora=dtf.format(now);
     }
     
+    /**
+     * Costruttore utile ad inizializzare i dati con valori di default
+     */
     public Rilevazione()
     {
         centro="";
@@ -43,6 +60,10 @@ public class Rilevazione {
         this.ora=dtf.format(now);
     }
     
+    /**
+     * Salva i dati su file
+     * @throws rilevazioneException evidenzia errori nel corso del salvataggio
+     */
     public void salvaRilevazione() throws rilevazioneException{
         try (FileWriter writer = new FileWriter("datafiles/ParametriClimatici.csv",true)) {
             writer.write(
