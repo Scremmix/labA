@@ -8,8 +8,8 @@ import static java.lang.Math.min;
 import java.util.ArrayList;
 
 /**
- * Metodo riguardanti i dati dello stato in cui deve essere eseguita la 
- * rilevazione
+ * Classe riguardante i dati dello Stato, ossia le righe del 
+ * file contenente le località accomunate dallo stesso Stato
  * @author Lenovo
  */
 public class datiStato 
@@ -18,7 +18,7 @@ public class datiStato
     private ArrayList<String[]> elencoDati;
     
     /**
-     * metodo utile alla definizione del nome dello stato di ineresse
+     * Metodo utile alla definizione del nome dello stato di ineresse
      * @param nomeStato : nome dello stato in questione
      */
     public datiStato(String nomeStato)
@@ -31,14 +31,14 @@ public class datiStato
      * Metodo utile all'inserimento della località di interesse
      * @param dato relativo alla località di interesse
      * @throws datiStatoException eccezione che stabilisce che i dati inseriti
-     * non sono corretti
+     * siano o meno in un formato invalido
      */
     public void inserireLocalita(String[] dato) throws datiStatoException
     {
         if(dato.length==6)
             elencoDati.add(dato);
         else
-            throw new datiStatoException("Formato dati incorretto.");
+            throw new datiStatoException("Formato dati non valido.");
     }
     
     /**
@@ -49,13 +49,13 @@ public class datiStato
     {return this.nomeStato;}
     
     /**
-     * Metodo utile alla ricerca di uno stato per nome ascii
+     * Metodo utile alla ricerca di una località per nome ascii
      * @param nomeAscii : nome ascii dello stato
-     * @return : risultato della ricerca
+     * @return : risultato/i della ricerca
      */
     public ArrayList<String[]> cerca(String nomeAscii)
     {
-        ArrayList<String[]> risultato= new ArrayList<String[]>();
+        ArrayList<String[]> risultato= new ArrayList<>();
         int primoEl= ricercaPrecisa(nomeAscii, 0, elencoDati.size()-1);
         if(primoEl==-1)
             return null;
@@ -89,8 +89,8 @@ public class datiStato
     }
     
     /**
-     * Ricerca il nome ascii della località passata come parametro tra riga
-     * "min" e riga "max"
+     * Effettua una ricerca binaria ricorsiva  della località (in nome ascii)
+     * tra la riga "min" e la riga "max"
      * @param nome ascii della località
      * @param min : riga "min"
      * @param max : riga "max"
@@ -118,7 +118,5 @@ public class datiStato
                 return ricercaPrecisa(nome, min, media);
         }
         else return media;
-        
-        //inserire per elemento non trovato
     }
 }

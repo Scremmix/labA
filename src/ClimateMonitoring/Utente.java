@@ -12,7 +12,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
- * Riguarda i processi di login e registrazione degli utenti
+ * Riguarda i processi di login e registrazione degli operatori
  * @author Lenovo
  */
 public class Utente {
@@ -31,7 +31,7 @@ public class Utente {
      * Il metodo richiede all'utente i dati utili al login 
      * @param nomeUtente
      * @param password
-     * @return stabilisce il fallimento o il successo del login
+     * @return true in caso di successo, false altrimenti
      * @throws utenteException
      */
     public static boolean login(String nomeUtente, String password) throws utenteException
@@ -54,23 +54,22 @@ public class Utente {
     }
     
     /**
-     * metodo utile a richiamare un determinato username
+     * Metodo utile a ottenere i dati anagrafici dell'operatore attuale
      * @return nome e cognome
      */
     public static String getUsername()
     {return Utente.nome+" "+Utente.cognome;}
     
     /**
-     * utile a richiamare il nome del centro di monitoraggio
+     * Utile a richiamare il centro di monitoraggio cui è abbinato l'operatore attuale
      * @return id del centro in questione
      */
     public static String getCentro()
     {return Utente.idCentro;}
     
     /**
-     * Metodo utile a controllare la validità di nome utente e password, devono 
-     * essere diversi da null
-     * @return valore booleano 
+     * Metodo utile a controllare se un operatore è attualmente connesso o meno
+     * @return valore booleano corrispondente
      */
     public static boolean loggato()
     {
@@ -78,7 +77,7 @@ public class Utente {
     }
     
     /**
-     * metodo utile alla registrazione di nuovi utenti
+     * Metodo utile alla registrazione di nuovi utenti
      * @param nome del nuovo utente
      * @param cognome del nuovo utente
      * @param password1 : primo inserimento di una password
@@ -90,7 +89,7 @@ public class Utente {
      * @param idCentro di interesse, utile a sviluppare rilevazioni mirate
      * @return valore booleano che definisce il successo o il fallimento della 
      * registrazione
-     * @throws utenteException errore in fase di registrazione
+     * @throws utenteException eventuali errori in fase di registrazione
      */
     public static boolean register(String nome, String cognome, String password1, String password2, String email, String userID, String codiceFiscale, String idCentro) 
             throws utenteException

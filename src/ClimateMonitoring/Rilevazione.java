@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Salva i dati su file e gestisce le eccezioni del form
+ * Salva le nuove rilevazion su file e gestisce le eccezioni del form
  * @author Lenovo
  */
 public class Rilevazione {
@@ -21,9 +21,16 @@ public class Rilevazione {
      * @param area : area di interesse su cui sviluppare la rilevazione
      * @param tipoDato : nel metodo viene verificato che la sua tipologia
      * numerica sia valida
+     * "Vento" -> 0;
+     * "Umidità" -> 1;
+     * "Pressione" -> 2;
+     * "Temperatura" -> 3;
+     * "Precipitazioni" -> 4;
+     * "Altezza dei ghiacciai" -> 5;
+     * "Massa dei ghiacciai" -> 6;
      * @param valore : valore effettivo del dato
      * @param nota : informazioni riguardanti il dato
-     * @throws rilevazioneException : evidenzia eventuali errori
+     * @throws rilevazioneException : evidenzia eventuali errori relativi ai parametri
      */
     public Rilevazione(String centro, Long area, int tipoDato, int valore, String nota) throws rilevazioneException
     {
@@ -61,7 +68,7 @@ public class Rilevazione {
     }
     
     /**
-     * Salva i dati su file
+     * Salva i dati della rilevazione su file
      * @throws rilevazioneException evidenzia errori nel corso del salvataggio
      */
     public void salvaRilevazione() throws rilevazioneException{
