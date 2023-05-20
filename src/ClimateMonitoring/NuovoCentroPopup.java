@@ -13,7 +13,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Form grafico che permette di creare un nuovo centro di rilevazione
  * @author alesc
  */
 public class NuovoCentroPopup extends javax.swing.JFrame {

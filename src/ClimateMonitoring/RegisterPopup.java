@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 
 /**
- *
+ * Form grafico che permette di registrare un nuovo operatore
  * @author alesc
  */
 public class RegisterPopup extends javax.swing.JFrame {

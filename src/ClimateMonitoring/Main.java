@@ -7,7 +7,8 @@ package ClimateMonitoring;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Il main di tutto il programma
+ * Permette di eseguire le operazioni utente e operatore
  * @author alesc
  */
 public class Main extends javax.swing.JFrame {

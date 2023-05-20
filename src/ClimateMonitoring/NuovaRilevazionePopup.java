@@ -14,7 +14,8 @@ import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 
 /**
- * 
+ * Form grafico che permette di creare una nuova rilevazione
+ * per le località disponibili all'utetnte
  * @author alesc
  */
 public class NuovaRilevazionePopup extends javax.swing.JFrame {

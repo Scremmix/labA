@@ -11,7 +11,8 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
- * Classe utile alla ricerca di nomi e coordinate di zone in analisi
+ * Classe utile alla ricerca di località tramite nomi o coordinate
+ * e a mostrarne i relativi dat chiamando la classe DataDisplay
  * @author alesc
  */
 public class RicercaDati extends javax.swing.JFrame {

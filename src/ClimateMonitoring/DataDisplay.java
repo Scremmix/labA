@@ -9,7 +9,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Objects;
 import java.util.Scanner;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -41,7 +40,8 @@ class WordWrapCellRenderer extends JTextArea implements TableCellRenderer {
 }
 
 /**
- *
+ * Classe grafica che si occupa di mostrare le rilevazioni relative
+ * a una località selezionata
  * @author Lenovo
  */
 public class DataDisplay extends javax.swing.JFrame {
