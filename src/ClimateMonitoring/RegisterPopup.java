@@ -5,6 +5,7 @@
 package ClimateMonitoring;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import static java.lang.Math.min;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
@@ -293,7 +294,8 @@ public class RegisterPopup extends javax.swing.JFrame {
         ArrayList<String[]> risultati= new ArrayList<>();
         for(String[] riga: centriFile)
         {
-            if(nomeCentro.equalsIgnoreCase(nomeCentro))
+            if(riga[1].substring(0, min(riga[1].length(),nomeCentro.length()))
+                    .compareToIgnoreCase(nomeCentro)==0)
                 risultati.add(riga);
         }
         return risultati;
@@ -308,7 +310,8 @@ public class RegisterPopup extends javax.swing.JFrame {
     {
         for(String[] riga: centriFile)
         {
-            if(nomeCentro.equalsIgnoreCase(nomeCentro))
+            if(riga[1].substring(0, min(riga[1].length(),nomeCentro.length()))
+                    .compareToIgnoreCase(nomeCentro)==0)
                 return riga[0];
         }
         return null;
@@ -319,14 +322,14 @@ public class RegisterPopup extends javax.swing.JFrame {
      */
     private void caricaCentri()
     {
-        centriFile=new ArrayList<String[]>();
+        centriFile=new ArrayList<>();
         try {
                 FileReader read = new FileReader("datafiles/CentroMonitoraggio.csv");
                 Scanner input = new Scanner(read);
                 while(input.hasNextLine()) {
                     String line = input.nextLine();
                     String[] parts = line.split("#");
-                    centriFile.add(parts);
+                    if (parts.length>1)centriFile.add(parts);
                 }
             }
         catch(FileNotFoundException ex){
