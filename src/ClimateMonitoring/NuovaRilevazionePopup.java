@@ -49,7 +49,7 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
         }catch(FileNotFoundException ex){
             JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile trovare il fole contenente i centri di monitoraggio.");
         }
-        ArrayList<String[]> datiLocalita= new ArrayList<String[]>();
+        ArrayList<String[]> datiLocalita= new ArrayList<>();
         try {
                 FileReader read = new FileReader("datafiles/CoordinateMonitoraggio.csv");
                 Scanner input = new Scanner(read);
@@ -122,8 +122,8 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        annullaButton = new javax.swing.JButton();
+        salvaRilevazioneButton = new javax.swing.JButton();
         nomeLocalita = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -186,19 +186,19 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
 
         jLabel5.setText("Località dove è stata effettuata la rilevazione:");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setText("Annulla");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        annullaButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        annullaButton.setText("Annulla");
+        annullaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                annullaButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton2.setText("Invia");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        salvaRilevazioneButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        salvaRilevazioneButton.setText("Invia");
+        salvaRilevazioneButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                salvaRilevazioneButtonActionPerformed(evt);
             }
         });
 
@@ -237,9 +237,9 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(salvaRilevazioneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(annullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -287,8 +287,8 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGap(73, 73, 73))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(salvaRilevazioneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(annullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -306,10 +306,10 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
                 +", "+tabellaLocalita.getValueAt(tabellaLocalita.getSelectedRow(), 1));
     }//GEN-LAST:event_tabellaLocalitaMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void annullaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_annullaButtonActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_annullaButtonActionPerformed
 
     /**
      * Restituisce la stringa del bottone radio selezionato al momento
@@ -333,7 +333,7 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
      * @param evt 
      */
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void salvaRilevazioneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaRilevazioneButtonActionPerformed
         // TODO add your handling code here:
         int valoreTipo;
         valoreTipo = switch (getSelectedButtonText(gruppoTipoRilevazione)) {
@@ -363,13 +363,12 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
         catch(NullPointerException ex){
             JOptionPane.showMessageDialog(rootPane, "Nessuna area selezionata.");
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_salvaRilevazioneButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton annullaButton;
     private javax.swing.ButtonGroup gruppoTipoRilevazione;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -385,6 +384,7 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbTemp;
     private javax.swing.JRadioButton rbUmid;
     private javax.swing.JRadioButton rbVento;
+    private javax.swing.JButton salvaRilevazioneButton;
     private javax.swing.JTable tabellaLocalita;
     private javax.swing.JSlider valoreSlider;
     private javax.swing.JLabel xSlider;

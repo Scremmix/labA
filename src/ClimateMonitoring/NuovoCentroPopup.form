@@ -65,7 +65,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="salvaButton" min="-2" pref="116" max="-2" attributes="0"/>
+                      <Component id="salvaRilevazioneButton" min="-2" pref="116" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="annullaButton" min="-2" pref="116" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
@@ -97,8 +97,8 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="cercaButton" max="32767" attributes="0"/>
-                                  <Component id="aggiungiButton" pref="84" max="32767" attributes="0"/>
+                                  <Component id="cercaLocalitaButton" max="32767" attributes="0"/>
+                                  <Component id="aggiungiLocalitaButton" pref="84" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -124,7 +124,7 @@
                           <Component id="nomeCentroBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="cercaButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="cercaLocalitaButton" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -133,7 +133,7 @@
                   <Component id="idBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="localitaCerca" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="statoCerca" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="aggiungiButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="aggiungiLocalitaButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -171,7 +171,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="salvaButton" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="salvaRilevazioneButton" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="annullaButton" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="localitaSelezionata" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -279,15 +279,15 @@
         <Property name="text" type="java.lang.String" value="Stato:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="cercaButton">
+    <Component class="javax.swing.JButton" name="cercaLocalitaButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cerca"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cercaButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cercaLocalitaButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="salvaButton">
+    <Component class="javax.swing.JButton" name="salvaRilevazioneButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
@@ -295,7 +295,7 @@
         <Property name="text" type="java.lang.String" value="Salva"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salvaButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salvaRilevazioneButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="annullaButton">
@@ -319,12 +319,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="statoBoxActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="aggiungiButton">
+    <Component class="javax.swing.JButton" name="aggiungiLocalitaButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Aggiungi"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aggiungiButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aggiungiLocalitaButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel13">

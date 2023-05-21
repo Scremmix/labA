@@ -29,10 +29,10 @@ public class Utente {
     
     /**
      * Il metodo richiede all'utente i dati utili al login 
-     * @param nomeUtente
-     * @param password
+     * @param nomeUtente ID dell'utente da loggare
+     * @param password password dell'utente da loggare
      * @return true in caso di successo, false altrimenti
-     * @throws utenteException
+     * @throws utenteException errori in caso di apertura file
      */
     public static boolean login(String nomeUtente, String password) throws utenteException
     {

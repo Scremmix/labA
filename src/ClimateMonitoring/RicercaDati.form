@@ -36,7 +36,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="areaToDisplay" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jButton1" min="-2" pref="206" max="-2" attributes="0"/>
+                              <Component id="mostraRilevazioniButton" min="-2" pref="206" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -55,7 +55,7 @@
                           <Group type="102" attributes="0">
                               <Component id="Valore2" min="-2" pref="300" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="DataSearchButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="cercaLocalitaButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="117" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -76,7 +76,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Valore1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Valore2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="DataSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cercaLocalitaButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" pref="475" max="32767" attributes="0"/>
@@ -86,7 +86,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="areaToDisplay" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="mostraRilevazioniButton" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
@@ -108,15 +108,15 @@
     </Component>
     <Component class="javax.swing.JTextField" name="Valore2">
     </Component>
-    <Component class="javax.swing.JButton" name="DataSearchButton">
+    <Component class="javax.swing.JButton" name="cercaLocalitaButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cerca"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DataSearchButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cercaLocalitaButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="mostraRilevazioniButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
@@ -124,7 +124,7 @@
         <Property name="text" type="java.lang.String" value="Mostra dati"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mostraRilevazioniButtonActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">

@@ -7,7 +7,7 @@ package ClimateMonitoring;
 import javax.swing.JOptionPane;
 
 /**
- * Classe utile alla crezione del popup di Login
+ * Classe utile alla crezione del popup di Login.
  * Per il login, chiede l'ID utente e la relativa password
  * @author alesc
  */
@@ -30,8 +30,8 @@ public class LoginPopup extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        faiLogin = new javax.swing.JButton();
+        anullaButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
         password = new javax.swing.JPasswordField();
@@ -40,19 +40,19 @@ public class LoginPopup extends javax.swing.JFrame {
 
         setBackground(new java.awt.Color(248, 248, 248));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        faiLogin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        faiLogin.setText("Login");
+        faiLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                faiLoginActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton2.setText("Annulla");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        anullaButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        anullaButton.setText("Annulla");
+        anullaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                anullaButtonActionPerformed(evt);
             }
         });
 
@@ -77,9 +77,9 @@ public class LoginPopup extends javax.swing.JFrame {
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(faiLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(anullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(username)
                     .addComponent(password))
                 .addContainerGap(127, Short.MAX_VALUE))
@@ -99,20 +99,20 @@ public class LoginPopup extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(faiLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void anullaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anullaButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_anullaButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void faiLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_faiLoginActionPerformed
         // TODO add your handling code here:
         try{
             if(!Utente.login(username.getText(), new String(password.getPassword())))
@@ -126,11 +126,11 @@ public class LoginPopup extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_faiLoginActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton anullaButton;
+    private javax.swing.JButton faiLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

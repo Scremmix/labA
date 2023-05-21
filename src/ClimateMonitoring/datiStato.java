@@ -24,13 +24,13 @@ public class datiStato
     public datiStato(String nomeStato)
     {
         this.nomeStato=nomeStato;
-        elencoDati= new ArrayList<String[]>();
+        elencoDati= new ArrayList<>();
     }
     
     /**
      * Metodo utile all'inserimento della località di interesse
      * @param dato relativo alla località di interesse
-     * @throws datiStatoException eccezione che stabilisce che i dati inseriti
+     * @throws datiStatoException eccezione che stabilisce se i dati inseriti
      * siano o meno in un formato invalido
      */
     public void inserireLocalita(String[] dato) throws datiStatoException
@@ -50,8 +50,8 @@ public class datiStato
     
     /**
      * Metodo utile alla ricerca di una località per nome ascii
-     * @param nomeAscii : nome ascii dello stato
-     * @return : risultato/i della ricerca
+     * @param nomeAscii nome ascii dello stato
+     * @return risultato/i della ricerca
      */
     public ArrayList<String[]> cerca(String nomeAscii)
     {

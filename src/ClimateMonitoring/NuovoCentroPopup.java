@@ -58,12 +58,12 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        cercaButton = new javax.swing.JButton();
-        salvaButton = new javax.swing.JButton();
+        cercaLocalitaButton = new javax.swing.JButton();
+        salvaRilevazioneButton = new javax.swing.JButton();
         annullaButton = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         statoBox = new javax.swing.JTextField();
-        aggiungiButton = new javax.swing.JButton();
+        aggiungiLocalitaButton = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         localitaSelezionata = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -105,18 +105,18 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
 
         jLabel11.setText("Stato:");
 
-        cercaButton.setText("Cerca");
-        cercaButton.addActionListener(new java.awt.event.ActionListener() {
+        cercaLocalitaButton.setText("Cerca");
+        cercaLocalitaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cercaButtonActionPerformed(evt);
+                cercaLocalitaButtonActionPerformed(evt);
             }
         });
 
-        salvaButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        salvaButton.setText("Salva");
-        salvaButton.addActionListener(new java.awt.event.ActionListener() {
+        salvaRilevazioneButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        salvaRilevazioneButton.setText("Salva");
+        salvaRilevazioneButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salvaButtonActionPerformed(evt);
+                salvaRilevazioneButtonActionPerformed(evt);
             }
         });
 
@@ -136,10 +136,10 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
             }
         });
 
-        aggiungiButton.setText("Aggiungi");
-        aggiungiButton.addActionListener(new java.awt.event.ActionListener() {
+        aggiungiLocalitaButton.setText("Aggiungi");
+        aggiungiLocalitaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aggiungiButtonActionPerformed(evt);
+                aggiungiLocalitaButtonActionPerformed(evt);
             }
         });
 
@@ -189,7 +189,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                         .addGap(38, 38, 38))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(salvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(salvaRilevazioneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(annullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(64, 64, 64)))
@@ -215,8 +215,8 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                                     .addComponent(statoCerca, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cercaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(aggiungiButton, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))))
+                                    .addComponent(cercaLocalitaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(aggiungiLocalitaButton, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))))
                         .addGap(16, 16, 16))))
         );
         layout.setVerticalGroup(
@@ -233,7 +233,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(jLabel11)
                             .addComponent(nomeCentroBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(cercaButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cercaLocalitaButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -241,7 +241,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                     .addComponent(idBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(localitaCerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(statoCerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(aggiungiButton))
+                    .addComponent(aggiungiLocalitaButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -271,7 +271,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(salvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salvaRilevazioneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(annullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13)
                     .addComponent(localitaSelezionata))
@@ -290,7 +290,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
      * ricerca per nome oppure stato e attiva popup in caso di errori
      * @param evt 
      */
-    private void cercaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cercaButtonActionPerformed
+    private void cercaLocalitaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cercaLocalitaButtonActionPerformed
         // TODO add your handling code here:
         if(localitaCerca.getText().isBlank()||localitaCerca.getText().isEmpty())
         {
@@ -313,13 +313,13 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                             mostraInTabella(elencoLocalita);
                     }
         }
-    }//GEN-LAST:event_cercaButtonActionPerformed
+    }//GEN-LAST:event_cercaLocalitaButtonActionPerformed
     
     /**
      * Fa controlli sugli input e salva il nuovo centro su file se ogni input è utilizzabile
      * @param evt 
      */
-    private void salvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaButtonActionPerformed
+    private void salvaRilevazioneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaRilevazioneButtonActionPerformed
         // TODO add your handling code here:
         
         if(nomeCentroBox.getText().isBlank() ||  nomeCentroBox.getText().isEmpty())
@@ -379,7 +379,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
             else
                 JOptionPane.showMessageDialog(rootPane, "Esiste già un centro con l'ID inserito");
         }
-    }//GEN-LAST:event_salvaButtonActionPerformed
+    }//GEN-LAST:event_salvaRilevazioneButtonActionPerformed
 
     private void localitaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_localitaTableMouseClicked
         // TODO add your handling code here
@@ -402,7 +402,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
      * Aggiunge l'id della riga selezionata della tabella agli id da abbinare
      * @param evt 
      */
-    private void aggiungiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
+    private void aggiungiLocalitaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiLocalitaButtonActionPerformed
         // TODO add your handling code here:
         int [] righeSelez=localitaTable.getSelectedRows();
         for(int singolaRiga: righeSelez)
@@ -415,7 +415,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                 localitaAggiungere.setText(localitaAggiungere.getText()+testoInPiu);
                 idDaAbbinare.add(Long.valueOf(ddtm.getValueAt(singolaRiga, 2).toString()));
             }
-    }//GEN-LAST:event_aggiungiButtonActionPerformed
+    }//GEN-LAST:event_aggiungiLocalitaButtonActionPerformed
     
     /**
      * Mostra i risultati della ricerca nome/Stato in tabella
@@ -458,7 +458,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
     
     public void caricaPerNomi()
     {
-        mondoNomi=new ArrayList<datiStato>();
+        mondoNomi=new ArrayList<>();
         try {
                 FileReader read = new FileReader("datafiles/CoordinateMonitoraggio.csv");
                 Scanner input = new Scanner(read);
@@ -509,10 +509,10 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
 };
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton aggiungiButton;
+    private javax.swing.JButton aggiungiLocalitaButton;
     private javax.swing.JButton annullaButton;
     private javax.swing.JTextField capBox;
-    private javax.swing.JButton cercaButton;
+    private javax.swing.JButton cercaLocalitaButton;
     private javax.swing.JTextField comuneBox;
     private javax.swing.JTextField idBox;
     private javax.swing.JTextField indirizzoBox;
@@ -537,7 +537,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
     private javax.swing.JTable localitaTable;
     private javax.swing.JTextField nomeCentroBox;
     private javax.swing.JTextField provinciaBox;
-    private javax.swing.JButton salvaButton;
+    private javax.swing.JButton salvaRilevazioneButton;
     private javax.swing.JTextField statoBox;
     private javax.swing.JTextField statoCerca;
     // End of variables declaration//GEN-END:variables

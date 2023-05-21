@@ -72,7 +72,7 @@ public class RicercaDati extends javax.swing.JFrame {
      */
     public void caricaPerNomi()
     {
-        mondoNomi=new ArrayList<datiStato>();
+        mondoNomi=new ArrayList<>();
         try {
                 FileReader read = new FileReader("datafiles/CoordinateMonitoraggio.csv");
                 Scanner input = new Scanner(read);
@@ -104,7 +104,7 @@ public class RicercaDati extends javax.swing.JFrame {
      */
     public void caricaPerCoord()
     {
-        mondoCoord=new ArrayList<String[]>();
+        mondoCoord=new ArrayList<>();
         try {
                 FileReader read = new FileReader("datafiles/CoordinateMonitoraggio.csv");
                 Scanner input = new Scanner(read);
@@ -167,8 +167,8 @@ public class RicercaDati extends javax.swing.JFrame {
 
         Valore1 = new javax.swing.JTextField();
         Valore2 = new javax.swing.JTextField();
-        DataSearchButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        cercaLocalitaButton = new javax.swing.JButton();
+        mostraRilevazioniButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         dataToDisplayTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -185,18 +185,18 @@ public class RicercaDati extends javax.swing.JFrame {
             }
         });
 
-        DataSearchButton.setText("Cerca");
-        DataSearchButton.addActionListener(new java.awt.event.ActionListener() {
+        cercaLocalitaButton.setText("Cerca");
+        cercaLocalitaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DataSearchButtonActionPerformed(evt);
+                cercaLocalitaButtonActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setText("Mostra dati");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        mostraRilevazioniButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        mostraRilevazioniButton.setText("Mostra dati");
+        mostraRilevazioniButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                mostraRilevazioniButtonActionPerformed(evt);
             }
         });
 
@@ -244,7 +244,7 @@ public class RicercaDati extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(areaToDisplay)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(mostraRilevazioniButton, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(26, 26, 26))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,7 +258,7 @@ public class RicercaDati extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Valore2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(DataSearchButton)
+                                .addComponent(cercaLocalitaButton)
                                 .addContainerGap(117, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
@@ -272,7 +272,7 @@ public class RicercaDati extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Valore1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Valore2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DataSearchButton))
+                    .addComponent(cercaLocalitaButton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -281,7 +281,7 @@ public class RicercaDati extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(areaToDisplay)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(mostraRilevazioniButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(14, 14, 14))
         );
 
@@ -299,7 +299,7 @@ public class RicercaDati extends javax.swing.JFrame {
      * attiva e ne mostra i dati in tabella
      * @param evt 
      */
-    private void DataSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataSearchButtonActionPerformed
+    private void cercaLocalitaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cercaLocalitaButtonActionPerformed
         // TODO add your handling code here:
         if(Valore1.getText().isBlank()||Valore1.getText().isEmpty())
         {
@@ -364,7 +364,7 @@ public class RicercaDati extends javax.swing.JFrame {
                 }
             }
         }
-    }//GEN-LAST:event_DataSearchButtonActionPerformed
+    }//GEN-LAST:event_cercaLocalitaButtonActionPerformed
 
     /**
      * Mostra in tabella i dati delle località passati per parametro
@@ -391,7 +391,7 @@ public class RicercaDati extends javax.swing.JFrame {
      * Se è stata selezionata una località ne mostra le rilevazioni
      * @param evt 
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void mostraRilevazioniButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostraRilevazioniButtonActionPerformed
         // TODO add your handling code here:
         try{
             DataDisplay showData = new DataDisplay(Long.valueOf(ddtm.getValueAt(dataToDisplayTable.getSelectedRow(), 2).toString()));
@@ -401,7 +401,7 @@ public class RicercaDati extends javax.swing.JFrame {
                 + ", " + ddtm.getValueAt(dataToDisplayTable.getSelectedRow(), 1).toString());
         }catch(ArrayIndexOutOfBoundsException e)
         {JOptionPane.showMessageDialog(rootPane, "Nessuna area di interesse selezionata.");}
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_mostraRilevazioniButtonActionPerformed
 
     private void annullaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_annullaButtonActionPerformed
         // TODO add your handling code here:
@@ -430,14 +430,14 @@ public class RicercaDati extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Campo1;
     private javax.swing.JLabel Campo2;
-    private javax.swing.JButton DataSearchButton;
     private javax.swing.JTextField Valore1;
     private javax.swing.JTextField Valore2;
     private javax.swing.JButton annullaButton;
     private javax.swing.JLabel areaToDisplay;
+    private javax.swing.JButton cercaLocalitaButton;
     private javax.swing.JTable dataToDisplayTable;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton mostraRilevazioniButton;
     // End of variables declaration//GEN-END:variables
 }
