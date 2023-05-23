@@ -18,7 +18,7 @@ public class datiStato
     private ArrayList<String[]> elencoDati;
     
     /**
-     * Metodo utile alla definizione del nome dello stato di ineresse
+     * Metodo utile alla definizione del nome dello stato di interesse
      * @param nomeStato : nome dello stato in questione
      */
     public datiStato(String nomeStato)
