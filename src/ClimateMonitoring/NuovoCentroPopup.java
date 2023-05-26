@@ -360,14 +360,14 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
             String idString=idDaAbbinare.toString().replace(", ", "@").replace("[", "").replace("]", "");
             try(FileWriter writer = new FileWriter("datafiles/CentroMonitoraggio.csv",true)) {
             writer.write(
-                    idBox.getText()+"#"+
+                    "\n"+idBox.getText()+"#"+
                     nomeCentroBox.getText()+"#"+
-                            indirizzoBox.getText()+"#"+
-                            capBox.getText()+"#"+
-                            comuneBox.getText()+", "+
-                            provinciaBox.getText()+"#"+
-                            statoBox.getText()+"#"+
-                            idString+"\n"
+                    indirizzoBox.getText()+"#"+
+                    capBox.getText()+"#"+
+                    comuneBox.getText()+", "+
+                    provinciaBox.getText()+"#"+
+                    statoBox.getText()+"#"+
+                    idString
                 );
             writer.close();
             JOptionPane.showMessageDialog(rootPane, "Centro creato con successo.");

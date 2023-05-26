@@ -111,7 +111,7 @@ public class Utente {
         //nome#cognome#codiceFiscale#email#userID#password#centroID
         try (FileWriter writer = new FileWriter("datafiles/OperatoriRegistrati.csv",true)) {
             writer.write(
-                    nome+"#"+cognome+"#"+codiceFiscale+"#"+email+"#"+userID+"#"+password1+"#"+idCentro+"\n"
+                    "\n"+nome+"#"+cognome+"#"+codiceFiscale+"#"+email+"#"+userID+"#"+password1+"#"+idCentro
                 );
             writer.close();
             return true;

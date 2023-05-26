@@ -74,7 +74,7 @@ public class Rilevazione {
     public void salvaRilevazione() throws rilevazioneException{
         try (FileWriter writer = new FileWriter("datafiles/ParametriClimatici.csv",true)) {
             writer.write(
-                    centro+"#"+area.toString()+"#"+data+"#"+ora+"#"+tipoDato+"#"+valore+"#"+nota+"\n"
+                    "\n"+centro+"#"+area.toString()+"#"+data+"#"+ora+"#"+tipoDato+"#"+valore+"#"+nota
                 );
             writer.close();
         }
