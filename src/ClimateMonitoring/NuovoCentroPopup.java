@@ -396,7 +396,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_annullaButtonActionPerformed
 
-    ArrayList<Long> idDaAbbinare= new ArrayList<>();
+    private ArrayList<Long> idDaAbbinare= new ArrayList<>();
     
     /**
      * Aggiunge l'id della riga selezionata della tabella agli id da abbinare
@@ -421,7 +421,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
      * Mostra i risultati della ricerca nome/Stato in tabella
      * @param righe di dati da mostrare in tabella
      */
-    private void mostraInTabella(ArrayList<String[]> righe)
+    public void mostraInTabella(ArrayList<String[]> righe)
     {
         ddtm.setRowCount(0);
         String[] coordinateTemp;
@@ -433,14 +433,14 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
         }
     }
         
-    private ArrayList<datiStato> mondoNomi=null;
+    public ArrayList<datiStato> mondoNomi=null;
     
     /**
      * Ricerca del nome dello stato nella variabile contenente il file delle localita
      * @param nomeStato nome dello stato inserito
      * @return oggetto datiStato corrispondente se esiste, null altrimenti
      */
-    private datiStato cercaStato(String nomeStato)
+    public datiStato cercaStato(String nomeStato)
     {
         if(mondoNomi!=null)
         {

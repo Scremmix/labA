@@ -273,7 +273,7 @@ public class RegisterPopup extends javax.swing.JFrame {
      * Metodo che mostra in tabella i dati inseriti
      * @param dati da mostrare
      */
-    private void mostraInTabella(ArrayList<String[]> dati)
+    public void mostraInTabella(ArrayList<String[]> dati)
     {
         ddtm.setRowCount(0);
         for(String[] riga: dati)
@@ -289,7 +289,7 @@ public class RegisterPopup extends javax.swing.JFrame {
      * @param nomeCentro nome del centro in questione
      * @return ArrayList contenente le località valide
      */
-    private ArrayList<String[]> cercaCentro(String nomeCentro)
+    public ArrayList<String[]> cercaCentro(String nomeCentro)
     {
         ArrayList<String[]> risultati= new ArrayList<>();
         for(String[] riga: centriFile)
@@ -306,7 +306,7 @@ public class RegisterPopup extends javax.swing.JFrame {
      * @param nomeCentro nome del centro
      * @return id del centro oppure null se non esiste
      */
-    private String trovaIDCentro(String nomeCentro)
+    public String trovaIDCentro(String nomeCentro)
     {
         for(String[] riga: centriFile)
         {
@@ -320,7 +320,7 @@ public class RegisterPopup extends javax.swing.JFrame {
     /**
      * Carica il file contenente i centri di monitoraggio
      */
-    private void caricaCentri()
+    public void caricaCentri()
     {
         centriFile=new ArrayList<>();
         try {

@@ -25,7 +25,7 @@ public class RicercaDati extends javax.swing.JFrame {
      * @param nomeStato nome dello stato in questione
      * @return l'oggetto datiStato del relativo stato se esistente, null altrimenti
      */
-    private datiStato cercaStato(String nomeStato)
+    public datiStato cercaStato(String nomeStato)
     {
         if(mondoNomi!=null)
         {
@@ -367,7 +367,7 @@ public class RicercaDati extends javax.swing.JFrame {
      * Mostra in tabella i dati delle località passati per parametro
      * @param righe di dati da mostrare
      */
-    private void mostraInTabella(ArrayList<String[]> righe)
+    public void mostraInTabella(ArrayList<String[]> righe)
     {
         ddtm.setRowCount(0);
         String[] coordinateTemp;

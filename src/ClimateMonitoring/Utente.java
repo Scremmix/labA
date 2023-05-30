@@ -129,7 +129,7 @@ public class Utente {
      * @throws utenteException errore nella ricerca del file contenente gli 
      * utenti
      */
-    private static String[] cerca(String nomeUtente, String pw)throws utenteException{
+    public static String[] cerca(String nomeUtente, String pw)throws utenteException{
         try {
             FileReader read = new FileReader("datafiles/OperatoriRegistrati.csv");
             Scanner input = new Scanner(read);

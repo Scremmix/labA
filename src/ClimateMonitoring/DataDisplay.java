@@ -54,6 +54,140 @@ public class DataDisplay extends javax.swing.JFrame {
      */
     public void impostaLocalita(String localita)
     {this.locationSpecifics.setText(localita);}
+
+    /**
+     * Calcola le statistiche da mostrare prendendo i dati dalle tabelle
+     */
+    public void popolaStatistiche()
+    {
+        javax.swing.JLabel[] mediaLabelArray = new javax.swing.JLabel[] 
+            {media1,media2,media3,media4,media5,media6,media7};
+        javax.swing.JLabel[] medianaLabelArray = new javax.swing.JLabel[] 
+            {mediana1,mediana2,mediana3,mediana4,mediana5,mediana6,mediana7};
+        javax.swing.JLabel[] modaLabelArray = new javax.swing.JLabel[] 
+            {moda1,moda2,moda3,moda4,moda5,moda6,moda7};
+        javax.swing.JLabel[] numValLabelArray = new javax.swing.JLabel[] 
+            {numScansioni1,numScansioni2,numScansioni3,numScansioni4,numScansioni5,numScansioni6,numScansioni7};
+        
+        for(int i=0; i<7; i++)
+        {
+            ArrayList<Integer> valori= new ArrayList<>();
+            for(int j=0; j<tableModArray[i].getRowCount();j++)
+                valori.add(
+                    Integer.valueOf(tableModArray[i].getValueAt(j, 2).toString())
+                );
+            
+            if(valori.isEmpty())
+                numValLabelArray[i].setText("N/A");
+            else
+                numValLabelArray[i].setText(Integer.toString(valori.size()));
+            
+            Integer calcolo=calcolaMedia(valori);
+            if(calcolo==0)
+                mediaLabelArray[i].setText("N/A");
+            else
+                mediaLabelArray[i].setText(calcolo.toString());
+            
+            calcolo=calcolaMediana(valori);
+            if(calcolo==0)
+                medianaLabelArray[i].setText("N/A");
+            else
+                medianaLabelArray[i].setText(calcolo.toString());
+            
+            calcolo=calcolaModa(valori);
+            if(calcolo==-1)
+                modaLabelArray[i].setText("N/A");
+            else
+                modaLabelArray[i].setText(calcolo.toString());
+        }
+    }
+    /**
+     * 
+     * Metodo utile al calcolo della media dei valori inseriti
+     * @param valori ArrayList contentente i valori da elaborare
+     * @return risultato la media in Integer dei valori inseriti
+     */
+    public Integer calcolaMedia(ArrayList<Integer> valori)
+    {
+        Integer risultato=0;
+        for(Integer valore:valori)
+            risultato+=valore;
+        if(!valori.isEmpty())
+            risultato=risultato/valori.size();
+        return risultato;
+    }
+    /**
+     * Metodo dedito al calcolo della mediana dei valori inseriti
+     * @param valori ArrayList contentente i valori da elaborare
+     * @return valore la mediana in Integer dei valori inseriti 
+     */
+    public Integer calcolaMediana(ArrayList<Integer> valori)
+    {
+        Collections.sort(valori);
+        if(valori.isEmpty())
+            return 0;
+        if(valori.size()%2==0)
+            return (valori.get(valori.size()/2)+valori.get((valori.size()/2)-1))/2;
+        else
+            return valori.get(valori.size()/2);
+    }
+    
+    /**
+     * Metodo utile al calcolo della moda
+     * @param valori ArrayList contentente i valori da elaborare
+     * @return moda in Integer dei valori inseriti se esiste, -1 altrimenti
+     */
+    public Integer calcolaModa(ArrayList<Integer> valori)
+    {
+        Collections.sort(valori);
+        if(valori.isEmpty())
+            return 0;
+        Integer[] ricorrenze={0,0,0,0,0};
+        for(Integer valore:valori)
+            ricorrenze[valore-1]++;
+        Integer ricorrenzaMax=-1,posMax=-1;
+        boolean repeat=false;
+        
+        for(int i=0; i<5; i++)
+        {
+            if(ricorrenze[i].equals(ricorrenzaMax))
+                repeat=true;
+            if(i==0 || ricorrenze[i]>ricorrenzaMax)
+            {
+                repeat=false;
+                ricorrenzaMax=ricorrenze[i];
+                posMax=i;
+            }
+        }
+        if(!repeat)
+            return posMax+1;
+        else
+            return -1;
+    }
+    
+    /**
+     * Serve per riempire le tabelle con i dati scritti su file
+     */
+    public void popolaTabelle()
+    {
+        if(this.idArea!=null)
+        {
+            try {
+                FileReader read = new FileReader("datafiles/ParametriClimatici.csv");
+                Scanner input = new Scanner(read);
+                while(input.hasNextLine()) {
+                    String line = input.nextLine();
+                    String[] parts = line.split("#");
+                    if (parts[1].equals(this.idArea.toString()))
+                        tableModArray[Integer.parseInt(parts[4])].addRow
+                            (new Object[] {parts[2],parts[3],parts[5],parts[6]});
+                }
+            }
+            catch(FileNotFoundException ex){
+                System.out.println("Impossibile trovare il file contenente le rilevazioni.");
+            }
+        }
+    }    
     
     /**
      * Costruttore con parametro
@@ -925,142 +1059,6 @@ public class DataDisplay extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_chiudiButtonActionPerformed
 
-    /**
-     * Calcola le statistiche da mostrare prendendo i dati dalle tabelle
-     */
-    private void popolaStatistiche()
-    {
-        javax.swing.JLabel[] mediaLabelArray = new javax.swing.JLabel[] 
-            {media1,media2,media3,media4,media5,media6,media7};
-        javax.swing.JLabel[] medianaLabelArray = new javax.swing.JLabel[] 
-            {mediana1,mediana2,mediana3,mediana4,mediana5,mediana6,mediana7};
-        javax.swing.JLabel[] modaLabelArray = new javax.swing.JLabel[] 
-            {moda1,moda2,moda3,moda4,moda5,moda6,moda7};
-        javax.swing.JLabel[] numValLabelArray = new javax.swing.JLabel[] 
-            {numScansioni1,numScansioni2,numScansioni3,numScansioni4,numScansioni5,numScansioni6,numScansioni7};
-        
-        for(int i=0; i<7; i++)
-        {
-            ArrayList<Integer> valori= new ArrayList<>();
-            for(int j=0; j<tableModArray[i].getRowCount();j++)
-                valori.add(
-                    Integer.valueOf(tableModArray[i].getValueAt(j, 2).toString())
-                );
-            
-            if(valori.isEmpty())
-                numValLabelArray[i].setText("N/A");
-            else
-                numValLabelArray[i].setText(Integer.toString(valori.size()));
-            
-            Integer calcolo=calcolaMedia(valori);
-            if(calcolo==0)
-                mediaLabelArray[i].setText("N/A");
-            else
-                mediaLabelArray[i].setText(calcolo.toString());
-            
-            calcolo=calcolaMediana(valori);
-            if(calcolo==0)
-                medianaLabelArray[i].setText("N/A");
-            else
-                medianaLabelArray[i].setText(calcolo.toString());
-            
-            calcolo=calcolaModa(valori);
-            if(calcolo==-1)
-                modaLabelArray[i].setText("N/A");
-            else
-                modaLabelArray[i].setText(calcolo.toString());
-        }
-    }
-
-    /**
-     * Metodo utile al calcolo della media dei valori inseriti
-     * @param valori ArrayList contentente i valori da elaborare
-     * @return risultato la media in Integer dei valori inseriti
-     */
-    private Integer calcolaMedia(ArrayList<Integer> valori)
-    {
-        Integer risultato=0;
-        for(Integer valore:valori)
-            risultato+=valore;
-        if(!valori.isEmpty())
-            risultato=risultato/valori.size();
-        return risultato;
-    }
-    
-    /**
-     * Metodo dedito al calcolo della mediana dei valori inseriti
-     * @param valori ArrayList contentente i valori da elaborare
-     * @return valore la mediana in Integer dei valori inseriti 
-     */
-    private Integer calcolaMediana(ArrayList<Integer> valori)
-    {
-        Collections.sort(valori);
-        if(valori.isEmpty())
-            return 0;
-        if(valori.size()%2==0)
-            return (valori.get(valori.size()/2)+valori.get((valori.size()/2)-1))/2;
-        else
-            return valori.get(valori.size()/2);
-    }
-    
-    /**
-     * metodo utile al calcolo della moda
-     * @param valori ArrayList contentente i valori da elaborare
-     * @return moda in Integer dei valori inseriti se esiste, -1 altrimenti
-     */
-    private Integer calcolaModa(ArrayList<Integer> valori)
-    {
-        Collections.sort(valori);
-        if(valori.isEmpty())
-            return 0;
-        Integer[] ricorrenze={0,0,0,0,0};
-        for(Integer valore:valori)
-            ricorrenze[valore-1]++;
-        Integer ricorrenzaMax=-1,posMax=-1;
-        boolean repeat=false;
-        
-        for(int i=0; i<5; i++)
-        {
-            if(ricorrenze[i].equals(ricorrenzaMax))
-                repeat=true;
-            if(i==0 || ricorrenze[i]>ricorrenzaMax)
-            {
-                repeat=false;
-                ricorrenzaMax=ricorrenze[i];
-                posMax=i;
-            }
-        }
-        if(!repeat)
-            return posMax+1;
-        else
-            return -1;
-    }
-    
-    /**
-     * Serve per riempire le tabelle con i dati scritti su file
-     */
-    private void popolaTabelle()
-    {
-        if(this.idArea!=null)
-        {
-            try {
-                FileReader read = new FileReader("datafiles/ParametriClimatici.csv");
-                Scanner input = new Scanner(read);
-                while(input.hasNextLine()) {
-                    String line = input.nextLine();
-                    String[] parts = line.split("#");
-                    if (parts[1].equals(this.idArea.toString()))
-                        tableModArray[Integer.parseInt(parts[4])].addRow
-                            (new Object[] {parts[2],parts[3],parts[5],parts[6]});
-                }
-            }
-            catch(FileNotFoundException ex){
-                System.out.println("Impossibile trovare il file contenente le rilevazioni.");
-            }
-        }
-    }
-    
-    
     //modelli delle svariate tabelle
 
     

@@ -96,7 +96,7 @@ public class datiStato
      * @param max : riga "max"
      * @return risultato della ricerca
      */
-    private int ricercaPrecisa(String nome,int min, int max)
+    public int ricercaPrecisa(String nome,int min, int max)
     {
         int media=(max+min)/2;
         
