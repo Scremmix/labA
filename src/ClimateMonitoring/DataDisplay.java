@@ -928,7 +928,6 @@ public class DataDisplay extends javax.swing.JFrame {
     /**
      * Calcola le statistiche da mostrare prendendo i dati dalle tabelle
      */
-    
     private void popolaStatistiche()
     {
         javax.swing.JLabel[] mediaLabelArray = new javax.swing.JLabel[] 

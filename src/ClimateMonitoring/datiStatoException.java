@@ -5,7 +5,9 @@
 package ClimateMonitoring;
 
 /**
- *
+ * Eccezioni causate dagli errori relativi alla 
+ * classe datiException (quindi al caricamento del file
+ * delle località di rilevamento)
  * @author Lenovo
  */
 public class datiStatoException extends Exception{

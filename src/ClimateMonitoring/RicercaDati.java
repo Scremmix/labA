@@ -17,9 +17,6 @@ import javax.swing.JOptionPane;
  */
 public class RicercaDati extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JFrameTest
-     */
     private ArrayList<datiStato> mondoNomi=null;
     private ArrayList<String[]> mondoCoord=null;
     
