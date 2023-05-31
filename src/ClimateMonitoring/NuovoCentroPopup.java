@@ -344,7 +344,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
         else{
             boolean continua=true;
             try {
-                FileReader read = new FileReader("datafiles/CentroMonitoraggio.csv");
+                FileReader read = new FileReader("data/CentroMonitoraggio.csv");
                 Scanner input = new Scanner(read);
                 while(input.hasNextLine()&&continua) {
                     String line = input.nextLine();
@@ -359,7 +359,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
             if(continua)
             {
             String idString=idDaAbbinare.toString().replace(", ", "@").replace("[", "").replace("]", "");
-            try(FileWriter writer = new FileWriter("datafiles/CentroMonitoraggio.csv",true)) {
+            try(FileWriter writer = new FileWriter("data/CentroMonitoraggio.csv",true)) {
             writer.write(
                     "\n"+idBox.getText()+"#"+
                     nomeCentroBox.getText()+"#"+
@@ -461,7 +461,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
     {
         mondoNomi=new ArrayList<>();
         try {
-                FileReader read = new FileReader("datafiles/CoordinateMonitoraggio.csv");
+                FileReader read = new FileReader("data/CoordinateMonitoraggio.csv");
                 Scanner input = new Scanner(read);
                 datiStato temp=null;
                 while(input.hasNextLine()) {

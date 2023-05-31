@@ -72,7 +72,7 @@ public class RicercaDati extends javax.swing.JFrame {
     {
         mondoNomi=new ArrayList<>();
         try {
-                FileReader read = new FileReader("datafiles/CoordinateMonitoraggio.csv");
+                FileReader read = new FileReader("data/CoordinateMonitoraggio.csv");
                 Scanner input = new Scanner(read);
                 datiStato temp=null;
                 while(input.hasNextLine()) {
@@ -104,7 +104,7 @@ public class RicercaDati extends javax.swing.JFrame {
     {
         mondoCoord=new ArrayList<>();
         try {
-                FileReader read = new FileReader("datafiles/CoordinateMonitoraggio.csv");
+                FileReader read = new FileReader("data/CoordinateMonitoraggio.csv");
                 Scanner input = new Scanner(read);
                 while(input.hasNextLine()) {
                     String line = input.nextLine();

@@ -114,7 +114,7 @@ public class Utente {
             throw new utenteException("Utente con lo stesso ID già esistente.");
         //inserire i file nel formato:
         //nome#cognome#codiceFiscale#email#userID#password#centroID
-        try (FileWriter writer = new FileWriter("datafiles/OperatoriRegistrati.csv",true)) {
+        try (FileWriter writer = new FileWriter("data/OperatoriRegistrati.csv",true)) {
             writer.write(
                     "\n"+nome+"#"+cognome+"#"+codiceFiscale+"#"+email+"#"+userID+"#"+password1+"#"+idCentro
                 );
@@ -136,7 +136,7 @@ public class Utente {
      */
     public static String[] cerca(String nomeUtente, String pw)throws utenteException{
         try {
-            FileReader read = new FileReader("datafiles/OperatoriRegistrati.csv");
+            FileReader read = new FileReader("data/OperatoriRegistrati.csv");
             Scanner input = new Scanner(read);
             while(input.hasNextLine()) {
                 String line = input.nextLine();

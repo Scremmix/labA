@@ -175,7 +175,7 @@ public class DataDisplay extends javax.swing.JFrame {
         if(this.idArea!=null)
         {
             try {
-                FileReader read = new FileReader("datafiles/ParametriClimatici.csv");
+                FileReader read = new FileReader("data/ParametriClimatici.csv");
                 Scanner input = new Scanner(read);
                 while(input.hasNextLine()) {
                     String line = input.nextLine();

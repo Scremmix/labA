@@ -324,7 +324,7 @@ public class RegisterPopup extends javax.swing.JFrame {
     {
         centriFile=new ArrayList<>();
         try {
-                FileReader read = new FileReader("datafiles/CentroMonitoraggio.csv");
+                FileReader read = new FileReader("data/CentroMonitoraggio.csv");
                 Scanner input = new Scanner(read);
                 while(input.hasNextLine()) {
                     String line = input.nextLine();

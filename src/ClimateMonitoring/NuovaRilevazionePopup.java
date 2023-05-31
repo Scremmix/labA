@@ -39,7 +39,7 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
         
         String[] arrayLocalID=new String[4];
         try {
-            FileReader read = new FileReader("datafiles/CentroMonitoraggio.csv");
+            FileReader read = new FileReader("data/CentroMonitoraggio.csv");
             Scanner input = new Scanner(read);
             while(input.hasNextLine()) {
                 String line = input.nextLine();
@@ -52,7 +52,7 @@ public class NuovaRilevazionePopup extends javax.swing.JFrame {
         }
         ArrayList<String[]> datiLocalita= new ArrayList<>();
         try {
-                FileReader read = new FileReader("datafiles/CoordinateMonitoraggio.csv");
+                FileReader read = new FileReader("data/CoordinateMonitoraggio.csv");
                 Scanner input = new Scanner(read);
                 while(input.hasNextLine()) {
                     String line = input.nextLine();
