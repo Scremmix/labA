@@ -6,7 +6,7 @@ package ClimateMonitoring;
 
 /**
  * Eccezioni causate dagli errori relativi alle azioni utente/operatore
- * @author Lenovo
+ * @author Riva Samuele
  */
 public class utenteException extends Exception{
 

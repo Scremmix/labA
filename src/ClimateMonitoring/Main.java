@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 /**
  * Il main di tutto il programma.
  * Permette di eseguire le operazioni utente e operatore
- * @author alesc
+ * @author Scremin Alessandro
  */
 public class Main extends javax.swing.JFrame {
 

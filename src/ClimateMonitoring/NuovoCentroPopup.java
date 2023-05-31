@@ -14,7 +14,8 @@ import javax.swing.JOptionPane;
 
 /**
  * Form grafico che permette di creare un nuovo centro di rilevazione
- * @author alesc
+ * @author Scremin Alessandro
+ * @author Riva Samuele
  */
 public class NuovoCentroPopup extends javax.swing.JFrame {
 

@@ -13,11 +13,16 @@ import java.util.regex.Pattern;
 
 /**
  * Riguarda i processi di login e registrazione degli operatori
- * @author Lenovo
+ * @author Riva Samuele
+ * @author Zucchi Luca
  */
 public class Utente {
     
     private static String nomeUtente, password, nome, cognome,idCentro;
+    
+    /**
+     * Imposta i parametri della classe Utente a valori di default (null)
+     */
     public Utente()
     {
         nomeUtente= null;

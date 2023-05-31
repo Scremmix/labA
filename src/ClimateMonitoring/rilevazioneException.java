@@ -7,7 +7,7 @@ package ClimateMonitoring;
 /**
  * Eccezioni causate dagli errori relativi alle
  * nuove rilevazioni da salvare
- * @author alesc
+ * @author Scremin Alessandro
  */
 public class rilevazioneException extends Exception{
 

@@ -10,7 +10,9 @@ import java.util.ArrayList;
 /**
  * Classe riguardante i dati dello Stato, ossia le righe del 
  * file contenente le località accomunate dallo stesso Stato
- * @author Lenovo
+ * @author Riva Samuele
+ * @author Scremin Alessandro
+ * @author Zucchi Luca
  */
 public class datiStato 
 {

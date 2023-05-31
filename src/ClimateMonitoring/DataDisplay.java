@@ -16,7 +16,7 @@ import javax.swing.table.TableCellRenderer;
 
 /**
  *
- * @author alesc
+ * @author Scremin Alessandro
  */
 class WordWrapCellRenderer extends JTextArea implements TableCellRenderer {
 
@@ -42,7 +42,9 @@ class WordWrapCellRenderer extends JTextArea implements TableCellRenderer {
 /**
  * Classe grafica che si occupa di mostrare le rilevazioni relative
  * a una località selezionata
- * @author Lenovo
+ * @author Riva Samuele
+ * @author Zucchi Luca
+ * @author Scremin Alessandro
  */
 public class DataDisplay extends javax.swing.JFrame {
 

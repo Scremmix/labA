@@ -13,7 +13,8 @@ import javax.swing.JOptionPane;
 /**
  * Classe utile alla ricerca di località tramite nomi o coordinate
  * e a mostrarne i relativi dat chiamando la classe DataDisplay
- * @author alesc
+ * @author Scremin Alessandro
+ * @author Riva Samuele
  */
 public class RicercaDati extends javax.swing.JFrame {
 

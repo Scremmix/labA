@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 /**
  * Classe utile alla crezione del popup di Login.
  * Per il login, chiede l'ID utente e la relativa password
- * @author alesc
+ * @author Scremin Alessandro
  */
 public class LoginPopup extends javax.swing.JFrame {
 

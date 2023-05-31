@@ -6,7 +6,9 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * Salva le nuove rilevazioni su file e gestisce le eccezioni del form
- * @author Lenovo
+ * @author Riva Samuele
+ * @author Scremin Alessandro
+ * @author Zucchi Luca
  */
 public class Rilevazione {
     private String centro; //esempio: Insubria
