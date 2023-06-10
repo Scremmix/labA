@@ -411,6 +411,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                         FileOutputStream opFileOUT = new FileOutputStream("data/OperatoriRegistrati.csv");
                         opFileOUT.write(inputBuffer.toString().getBytes());
                         opFileOUT.close();
+                        JOptionPane.showMessageDialog(rootPane, "Operatore abbinato con successo.");
                     } catch (FileNotFoundException e) 
                         {JOptionPane.showMessageDialog(rootPane, "Impossibile trovare il file contenente gli operatori registrati");}
                 }

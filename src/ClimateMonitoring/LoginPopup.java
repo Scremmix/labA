@@ -109,7 +109,7 @@ public class LoginPopup extends javax.swing.JFrame {
 
     private void anullaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anullaButtonActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_anullaButtonActionPerformed
 
     private void faiLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_faiLoginActionPerformed
@@ -120,7 +120,7 @@ public class LoginPopup extends javax.swing.JFrame {
             else
             {
                 JOptionPane.showMessageDialog(rootPane, "Login eseguito con successo.");
-                this.setVisible(false);
+                this.dispose();
             }
         }catch(utenteException e)
         {
