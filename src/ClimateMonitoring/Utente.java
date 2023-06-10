@@ -34,18 +34,18 @@ public class Utente {
     
     /**
      * Il metodo richiede all'utente i dati utili al login 
-     * @param nomeUtente ID dell'utente da loggare
+     * @param idUtente ID dell'utente da loggare
      * @param password password dell'utente da loggare
      * @return true in caso di successo, false altrimenti
      * @throws utenteException errori in caso di apertura file
      */
-    public static boolean login(String nomeUtente, String password) throws utenteException
+    public static boolean login(String idUtente, String password) throws utenteException
     {
         if(!loggato())
         {
-            String[] rigaUtente=Utente.cerca(nomeUtente, password);
+            String[] rigaUtente=Utente.cerca(idUtente, password);
             if(rigaUtente!=null){
-                    Utente.nomeUtente=nomeUtente;
+                    Utente.nomeUtente=idUtente;
                     Utente.password=password;
                     Utente.nome=rigaUtente[0];
                     Utente.cognome=rigaUtente[1];
@@ -57,6 +57,13 @@ public class Utente {
     // nomeUtente qui è lo userID ndicato nei commenti sottostanti
     // per esempio, Francesco Totti effettua il login con 7930
     }
+    
+    /**
+     * Metodo utile a ottenere l'ID dell'operatore attuale
+     * @return userID
+     */
+    public static String getIDUtente()
+    {return Utente.nomeUtente;}
     
     /**
      * Metodo utile a ottenere i dati anagrafici dell'operatore attuale
@@ -110,8 +117,8 @@ public class Utente {
         if(codiceFiscale.length()!=16)
             throw new utenteException("Il codice fiscale non è valido.");
         
-        if(Utente.cerca(nome, password1)!=null)
-            throw new utenteException("Utente con lo stesso ID già esistente.");
+        if(Utente.verificaIdoneita(userID, codiceFiscale, email))
+        {
         //inserire i file nel formato:
         //nome#cognome#codiceFiscale#email#userID#password#centroID
         try (FileWriter writer = new FileWriter("data/OperatoriRegistrati.csv",true)) {
@@ -124,24 +131,59 @@ public class Utente {
         catch(IOException e){
             throw new utenteException("Impossibile trovare il file contenente gli utenti.");
         }
+        }
+        else return false;
     }
     
     /**
-     * metodo utile alla ricerca di un utente registrato su file
-     * @param nomeUtente da ricercare
-     * @param pw da ricercare
-     * @return stabilisce il successo o il fallimento della ricerca
-     * @throws utenteException errore nella ricerca del file contenente gli 
-     * utenti
+     * Metodo utile a verificare se alcuni parametri della registrazione
+     * sono in uso da un utente già registrato
+     * @param idUtente del nuovo utente
+     * @param codiceFiscale del nuovo utente
+     * @param email del nuovo utente
+     * @return true se i parametri inseriti sono validi per una
+     * nuova registrazione, false altrimenti
+     * @throws utenteException eventuali errori specifici per le 
+     * incongruenze dei parametri (es email già in uso) o di lettura file
      */
-    public static String[] cerca(String nomeUtente, String pw)throws utenteException{
+    public static boolean verificaIdoneita(String idUtente, String codiceFiscale, String email) 
+            throws utenteException
+    {
         try {
             FileReader read = new FileReader("data/OperatoriRegistrati.csv");
             Scanner input = new Scanner(read);
             while(input.hasNextLine()) {
                 String line = input.nextLine();
                 String[] parts = line.split("#");
-                    if (parts[4].contains(nomeUtente) && parts[5].contains(pw))
+                    if(parts[4].equals(idUtente))
+                        throw new utenteException("Esiste già un operatore con lo stesso ID");
+                    if(parts[2].equalsIgnoreCase(codiceFiscale))
+                        throw new utenteException("Esiste già un operatore con lo stesso codice fiscale");
+                    if(parts[3].equalsIgnoreCase(email))
+                        throw new utenteException("Email già in uso da un operatore");
+                }
+        }catch(FileNotFoundException ex){
+            throw new utenteException("Impossibile trovare il file contenente gli utenti.");
+        }
+        return true;
+    }
+    
+    /**
+     * metodo utile alla ricerca di un utente registrato su file
+     * @param idUtente da ricercare
+     * @param pw da ricercare
+     * @return stabilisce il successo o il fallimento della ricerca
+     * @throws utenteException errore nella ricerca del file contenente gli 
+     * utenti
+     */
+    public static String[] cerca(String idUtente, String pw)throws utenteException{
+        try {
+            FileReader read = new FileReader("data/OperatoriRegistrati.csv");
+            Scanner input = new Scanner(read);
+            while(input.hasNextLine()) {
+                String line = input.nextLine();
+                String[] parts = line.split("#");
+                    if (parts[4].contains(idUtente) && parts[5].contains(pw))
                         return parts;
                 }
         }catch(FileNotFoundException ex){

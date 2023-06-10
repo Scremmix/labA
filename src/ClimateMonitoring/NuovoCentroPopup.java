@@ -4,12 +4,15 @@
  */
 package ClimateMonitoring;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.StringJoiner;
 import javax.swing.JOptionPane;
 
 /**
@@ -69,6 +72,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
         localitaSelezionata = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         localitaAggiungere = new javax.swing.JTextArea();
+        cambiaCentroOp = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -152,6 +156,8 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
         localitaAggiungere.setMaximumSize(new java.awt.Dimension(369, 34567));
         jScrollPane3.setViewportView(localitaAggiungere);
 
+        cambiaCentroOp.setText("Abbina l'operatore attuale al centro appena creato");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -161,11 +167,15 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(245, 245, 245))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(salvaRilevazioneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(annullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel6)
                                 .addComponent(jLabel7)
                                 .addComponent(jLabel10)
@@ -186,14 +196,11 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                                             .addComponent(provinciaBox)
                                             .addComponent(comuneBox)
                                             .addComponent(statoBox)))))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(38, 38, 38))
+                            .addComponent(jScrollPane3)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(salvaRilevazioneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(annullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)))
+                        .addContainerGap()
+                        .addComponent(cambiaCentroOp, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel13)
@@ -246,6 +253,13 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(localitaSelezionata))
+                        .addGap(41, 41, 41))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(indirizzoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -268,15 +282,14 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(salvaRilevazioneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(annullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13)
-                    .addComponent(localitaSelezionata))
-                .addGap(36, 36, 36))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cambiaCentroOp)
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(salvaRilevazioneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(annullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         pack();
@@ -358,21 +371,50 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
             }
             if(continua)
             {
-            String idString=idDaAbbinare.toString().replace(", ", "@").replace("[", "").replace("]", "");
-            try(FileWriter writer = new FileWriter("data/CentroMonitoraggio.csv",true)) {
-            writer.write(
-                    "\n"+idBox.getText()+"#"+
-                    nomeCentroBox.getText()+"#"+
-                    indirizzoBox.getText()+"#"+
-                    capBox.getText()+"#"+
-                    comuneBox.getText()+", "+
-                    provinciaBox.getText()+"#"+
-                    statoBox.getText()+"#"+
-                    idString
-                );
-            writer.close();
-            JOptionPane.showMessageDialog(rootPane, "Centro creato con successo.");
-            this.dispose();
+                String idString=idDaAbbinare.toString().replace(", ", "@").replace("[", "").replace("]", "");
+                try(FileWriter writer = new FileWriter("data/CentroMonitoraggio.csv",true)) {
+                    writer.write(
+                        "\n"+idBox.getText()+"#"+
+                        nomeCentroBox.getText()+"#"+
+                        indirizzoBox.getText()+"#"+
+                        capBox.getText()+"#"+
+                        comuneBox.getText()+", "+
+                        provinciaBox.getText()+"#"+
+                        statoBox.getText()+"#"+
+                        idString
+                    );
+                writer.close();
+                JOptionPane.showMessageDialog(rootPane, "Centro creato con successo.");
+                
+                if(cambiaCentroOp.isSelected())
+                {
+                    try {
+                        BufferedReader opFileIN = new BufferedReader(new FileReader("data/OperatoriRegistrati.csv"));
+                        StringBuffer inputBuffer = new StringBuffer();
+                        String line;
+
+                        while ((line = opFileIN.readLine()) != null) 
+                        {
+                            String[] tempLine = line.split("#");
+                            if(tempLine[4].equals(Utente.getIDUtente()))
+                            {
+                                tempLine[6]=idBox.getText();
+                                StringJoiner sj= new StringJoiner("#");
+                                for(String part : tempLine) 
+                                    sj.add(part);
+                                line=sj.toString();
+                            }
+                            inputBuffer.append(line);
+                            inputBuffer.append('\n');
+                        }
+                        opFileIN.close();
+                        FileOutputStream opFileOUT = new FileOutputStream("data/OperatoriRegistrati.csv");
+                        opFileOUT.write(inputBuffer.toString().getBytes());
+                        opFileOUT.close();
+                    } catch (FileNotFoundException e) 
+                        {JOptionPane.showMessageDialog(rootPane, "Impossibile trovare il file contenente gli operatori registrati");}
+                }
+                this.dispose();
             }
             catch(IOException e){
                 JOptionPane.showMessageDialog(rootPane, "Errore critico: impossibile salvare su file");
@@ -512,6 +554,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aggiungiLocalitaButton;
     private javax.swing.JButton annullaButton;
+    private javax.swing.JCheckBox cambiaCentroOp;
     private javax.swing.JTextField capBox;
     private javax.swing.JButton cercaLocalitaButton;
     private javax.swing.JTextField comuneBox;
