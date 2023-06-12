@@ -390,7 +390,7 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                 {
                     try {
                         BufferedReader opFileIN = new BufferedReader(new FileReader("data/OperatoriRegistrati.csv"));
-                        StringBuffer inputBuffer = new StringBuffer();
+                        StringJoiner sjFile= new StringJoiner("/n");
                         String line;
 
                         while ((line = opFileIN.readLine()) != null) 
@@ -399,17 +399,16 @@ public class NuovoCentroPopup extends javax.swing.JFrame {
                             if(tempLine[4].equals(Utente.getIDUtente()))
                             {
                                 tempLine[6]=idBox.getText();
-                                StringJoiner sj= new StringJoiner("#");
+                                StringJoiner sjRiga= new StringJoiner("#");
                                 for(String part : tempLine) 
-                                    sj.add(part);
-                                line=sj.toString();
+                                    sjRiga.add(part);
+                                line=sjRiga.toString();
                             }
-                            inputBuffer.append(line);
-                            inputBuffer.append('\n');
+                            sjFile.add(line);
                         }
                         opFileIN.close();
                         FileOutputStream opFileOUT = new FileOutputStream("data/OperatoriRegistrati.csv");
-                        opFileOUT.write(inputBuffer.toString().getBytes());
+                        opFileOUT.write(sjFile.toString().getBytes());
                         opFileOUT.close();
                         JOptionPane.showMessageDialog(rootPane, "Operatore abbinato con successo.");
                     } catch (FileNotFoundException e) 
