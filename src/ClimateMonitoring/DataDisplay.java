@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.TableCellRenderer;
@@ -181,12 +182,16 @@ public class DataDisplay extends javax.swing.JFrame {
                     String line = input.nextLine();
                     String[] parts = line.split("#");
                     if (parts[1].equals(this.idArea.toString()))
-                        tableModArray[Integer.parseInt(parts[4])].addRow
-                            (new Object[] {parts[2],parts[3],parts[5],parts[6]});
+                    {
+                        String[] valutazioni=parts[4].split("@");
+                        for(int i =0; i<7; i++)
+                            tableModArray[i].addRow
+                                (new Object[] {parts[2],parts[3],valutazioni[i],parts[5]});
+                    }
                 }
             }
             catch(FileNotFoundException ex){
-                System.out.println("Impossibile trovare il file contenente le rilevazioni.");
+                JOptionPane.showMessageDialog(rootPane,"Impossibile trovare il file contenente le rilevazioni.");
             }
         }
     }    
